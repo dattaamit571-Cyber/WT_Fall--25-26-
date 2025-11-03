@@ -12,11 +12,11 @@
 Fast Name:
 <input type="text"> <br><br>
 Last Name:
-<input type="textr"> <br><br>
+<input type="text"> <br><br>
 Student ID:
 <input type="number"> <br><br>
 Program Name:
-<input type="textr"> <br><br>
+<input type="text"> <br><br>
 Selecet Depertment:
 <input type="text"> <br><br>
 Phon Number:
@@ -24,7 +24,7 @@ Phon Number:
 University Email:
 <input type="text"> <br><br>
 Creat Password:
-<input type="textr"> <br><br>
+<input type="text"> <br><br>
 Confrom Password:
 <input type="text"> <br><br>
 Semester Selection :
@@ -32,8 +32,10 @@ Semester Selection :
 <input type="radio" name="sms" Value="2nd"> Fall_2025
 <input type="radio" name="sms" Valie="3nd"> Summer_2025
 <input type="radio" name="sms" Valie="4nd"> Other/Special Term <br><br>
+
 Requsted credit Load(Max):
 <input type="number"> <br><br>
+
 <input type="radio" name="req" Value="1st"> I requrie academic adversing before final registion <br><br>
 
 <h2 style="background-color: red; border-bottom: 4px solid black; padding: 10px;"> Course Selection:</h2>
