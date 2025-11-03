@@ -3,7 +3,7 @@
 <html>
 <body>
     <title>
-    Amit_O
+    WT_Fall (25-26)
 </title>
 <body>
     <table>
@@ -32,10 +32,8 @@ Semester Selection :
 <input type="radio" name="sms" Value="2nd"> Fall_2025
 <input type="radio" name="sms" Valie="3nd"> Summer_2025
 <input type="radio" name="sms" Valie="4nd"> Other/Special Term <br><br>
-
 Requsted credit Load(Max):
 <input type="number"> <br><br>
-
 <input type="radio" name="req" Value="1st"> I requrie academic adversing before final registion <br><br>
 
 <h2 style="background-color: red; border-bottom: 4px solid black; padding: 10px;"> Course Selection:</h2>
