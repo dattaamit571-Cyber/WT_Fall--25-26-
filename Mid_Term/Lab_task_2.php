@@ -1,7 +1,8 @@
-!<DOCTYPE htem>
-<html>
+<! DOCTYPE html>
+<html>  
 <body>
     <title>WT_Fall (25-26)</title>
-<body>
+<body> 
     <table>
-    <h1 style="background-color: red; border-bottom: 4px solid black; padding: 10px;">Student Registration From</h1>
+    <h1 style="background-color: red; border-bottom: 4px solid black; padding: 10px;">Student Course Drop Form</h1>
+    
