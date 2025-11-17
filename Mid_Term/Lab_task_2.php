@@ -4,22 +4,34 @@
     <title>WT_Fall (25-26)</title>
 <body> 
     <table>
-    <h1 style="background-color: red; border-bottom: 4px solid black; padding: 10px;">Perticipant Registration From</h1>
+    <h1>Perticipant Registration From</h1>
 
 FULL Name:
-<input type="text"> <br><br>
+<input type="text" id="full name" > <br><br>
 
 Email:
-<input type="text"> <br><br>
+<input type="text" id="email"> <br><br>
 
 Phone Number:
-<input type="number"> <br><br>
+<input type="number" id="phone"> <br><br>
 
 Creat Password:
-<input type="text"> <br><br>
+<input type="text" id="pass"> <br><br>
 
 Confrom Password:
-<input type="text"> <br><br>
-<input type="Register" value="Register">
+<input type="text" id="cpass"> <br><br>
+
+<button onclick="Submit()">Register</button><br><br>
 </body>
+</html>
+<h2 style="color:blue;">Activity Selection</h2>
+
+Activities Name:<br>
+<input type="text" id " activities name"><br><br>
+
+<button onclick="addActivity()">Add Activity</button><br><br>
+<div id="activityList"></div>
+
+<script src= "validation.js"></script>
+</body>     
 </html>
