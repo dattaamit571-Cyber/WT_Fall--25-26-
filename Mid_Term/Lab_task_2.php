@@ -7,19 +7,19 @@
     <h1>Perticipant Registration From</h1>
 
 FULL Name:
-<input type="text" id="full name" > <br><br>
+<input type="text" ="full name" > <br><br>
 
 Email:
-<input type="text" id="email"> <br><br>
+<input type="text"> <br><br>
 
 Phone Number:
-<input type="number" id="phone"> <br><br>
+<input type="number"> <br><br>
 
 Creat Password:
-<input type="text" id="pass"> <br><br>
+<input type="text"> <br><br>
 
 Confrom Password:
-<input type="text" id="cpass"> <br><br>
+<input type="text"> <br><br>
 
 <button onclick="Submit()">Register</button><br><br>
 </body>
@@ -33,5 +33,5 @@ Activities Name:<br>
 <div id="activityList"></div>
 
 <script src= "validation.js"></script>
-</body>     
+</body>
 </html>

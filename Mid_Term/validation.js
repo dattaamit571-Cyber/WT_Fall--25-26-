@@ -1,25 +1,64 @@
+ // Registration Validation
 function SubmitForm() {
-    let name = document.getElementById("Fullname").value.trim();
-    let email = document.getElementById("Email").value.trim();
-    let phone = document.getElementById("Phone").value.trim();
-    let pass = document.getElementById("Pass").value;
-    let cPass = document.getElementById("CPass").value;
-    if(!email
-        alert("Email is required."
-            return;
-    )
-    if(!phone.match(/^\d{10}$/)) {
-        alert("Phone number must be 10 digits.");
-        return;
-    } 
-    if(pass.length < 8) {
-        alert("Password must be at least 8 characters long.");
+
+    let name = document.getElementById("fullname").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let pass = document.getElementById("pass").value;
+    let cpass = document.getElementById("cpass").value;
+
+    // Empty field check
+    if (name === "" || email === "" || phone === "" || pass === "" || cpass === "") {
+        alert("All fields are required!");
         return;
     }
-    if(pass !== cPass) {
-        alert("Passwords do not match.");
+
+    // Email validation
+    if (!email.includes("@")) {
+        alert("Email must contain '@'");
         return;
+    }
+
+    // Phone must contain only digits
+    if (!/^[0-9]+$/.test(phone)) {
+        alert("Phone number must contain digits only!");
+        return;
+    }
+
+    // Password match check
+    if (pass !== cpass) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    // Success message
+    document.getElementById("result").innerHTML =
+        "<h3>Registration Successful!</h3>" +
+        "<p><b>Name:</b> " + name + "</p>" +
+        "<p><b>Email:</b> " + email + "</p>" +
+        "<p><b>Phone:</b> " + phone + "</p>";
+}
 
 
-    alert("Form submitted successfully!");
+// Activity add function
+function addActivity() {
+
+    let activity = document.getElementById("activityInput").value.trim();
+
+    if (activity === "") {
+        alert("Activity name cannot be empty!");
+        return;
+    }
+
+    let div = document.createElement("div");
+    div.style.margin = "5px 0";
+    div.style.padding = "5px";
+    div.style.border = "1px solid black";
+
+    div.innerHTML = activity +
+        " <button onclick='this.parentElement.remove()'>Remove</button>";
+
+    document.getElementById("activityList").appendChild(div);
+
+    document.getElementById("activityInput").value = ""; // Clear input
 }
