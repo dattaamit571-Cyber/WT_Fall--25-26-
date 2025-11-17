@@ -1,4 +1,3 @@
- // Registration Validation
 function SubmitForm() {
 
     let name = document.getElementById("fullname").value.trim();
@@ -7,31 +6,26 @@ function SubmitForm() {
     let pass = document.getElementById("pass").value;
     let cpass = document.getElementById("cpass").value;
 
-    // Empty field check
     if (name === "" || email === "" || phone === "" || pass === "" || cpass === "") {
         alert("All fields are required!");
         return;
     }
 
-    // Email validation
     if (!email.includes("@")) {
         alert("Email must contain '@'");
         return;
     }
 
-    // Phone must contain only digits
+
     if (!/^[0-9]+$/.test(phone)) {
         alert("Phone number must contain digits only!");
         return;
     }
-
-    // Password match check
     if (pass !== cpass) {
         alert("Passwords do not match!");
         return;
     }
-
-    // Success message
+ 
     document.getElementById("result").innerHTML =
         "<h3>Registration Successful!</h3>" +
         "<p><b>Name:</b> " + name + "</p>" +
@@ -39,8 +33,6 @@ function SubmitForm() {
         "<p><b>Phone:</b> " + phone + "</p>";
 }
 
-
-// Activity add function
 function addActivity() {
 
     let activity = document.getElementById("activityInput").value.trim();
