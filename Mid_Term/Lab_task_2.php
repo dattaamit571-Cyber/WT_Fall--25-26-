@@ -4,7 +4,27 @@
     <title>Lab Task 2</title>
     <link rel="stylesheet" href="Lab_task_2.css">
     <style>
-  
+        body{
+            background-color: cadetblue;
+        }
+        .xform{
+            background-color: DeepSkyBlue;
+            text-align: left;
+            padding: 0px 20px;
+            width: 450px;
+            height: auto;
+            border-radius: 20px;
+        }
+        .MI{
+            border-radius: 5px;
+            width: 450px;
+            height: 25px;
+        }
+        .MB{
+            background-color: blue;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <center>
