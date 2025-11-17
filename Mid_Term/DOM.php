@@ -17,7 +17,6 @@
 
 <script>
 
-
 function toggle()
 
 {
