@@ -2,19 +2,9 @@
 <html>
 <head>
     <title>Lab Task 2</title>
+    <link rel="stylesheet" href="Lab_task_2.css">
     <style>
-        body{
-            background-color: DarkGray;
-        }
-        .xform{
-            background-color: DodgerBlue;
-            text-align: left;
-            padding: 0px 20px;
-            width: 450px;
-            height: auto;
-            border-radius: 20px;
-        }
-    <Link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
     <center>
