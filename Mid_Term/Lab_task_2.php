@@ -3,28 +3,6 @@
 <head>
     <title>Lab Task 2</title>
     <link rel="stylesheet" href="Lab_task_2.css">
-    <style>
-        body{
-            background-color: cadetblue;
-        }
-        .xform{
-            background-color: DeepSkyBlue;
-            text-align: left;
-            padding: 0px 20px;
-            width: 450px;
-            height: auto;
-            border-radius: 20px;
-        }
-        .MI{
-            border-radius: 5px;
-            width: 450px;
-            height: 25px;
-        }
-        .MB{
-            background-color: blue;
-            color: white;
-        }
-    </style>
 </head>
 <body>
     <center>
@@ -33,19 +11,19 @@
                 <h1>Participents Registration</h1>
             </center>
 Full Name:
-<input type="text" id="name" class="MI" placeholder="Enter your full name"><br><br>  
+<input type="text" id="I1" class="MI" placeholder="Enter your full name"><br><br>  
 
 Email:
-<input type="text" id="email"class="MI" placeholder="Enter your email"><br><br>
+<input type="text" id="I2"class="MI" placeholder="Enter your email"><br><br>
 
 Phone Number:
-<input type="text" id="phone" class="MI" placeholder="Enter your phone number"><br><br>
+<input type="text" id="I3" class="MI" placeholder="Enter your phone number"><br><br>
 
 Password:
-<input type="text" id="password" class="MI" placeholder="Enter your password"><br><br>
+<input type="text" id="I4" class="MI" placeholder="Enter your password"><br><br>
 
 Confirm Password:
-<input type="text" id="cpassword" class="MI" placeholder="Confirm your password"><br><br>
+<input type="text" id="I5" class="MI" placeholder="Confirm your password"><br><br>
 
 <button id="B1" class="btn" onclick="validateForm()">Register</button>
 <div id="D1" style="background-color: indianred; color: white; border-radius: 10px; border-color: red;margin: 10px 0px;"></div>
