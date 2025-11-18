@@ -26,3 +26,27 @@ function reg() {
         DIV1.innerHTML = "Phone Number must be numeric!";
         return false;
     }
+    if(Password !=ConfirmPassword){
+        DIV1.style.backgroundcolor = "indianred";
+        DIV1.style.color = "white";
+        DIV1.innerHTML = "Password and Confirm Password must be same!";
+        return false;
+    }
+    DIV2.innerHTML = Registration Successful <br>
+    Name: " + FullName + "<br>
+    Email: " + Email + "<br>
+    Phone Number: " + phoneNumber;
+    return true;
+}
+function AddActivity(){
+    let Acti=document.getElementById("aname").value;
+    let DIV=document.getElementById("D3");
+    DIV.append(acti);
+    returns false;
+}
+function RemoveActivity(){
+    let DIV4=document.getElementById("D3");
+
+    DIV4.remove();
+    return false;
+}
