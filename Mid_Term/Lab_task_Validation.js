@@ -6,3 +6,11 @@ function reg() {
     let ConfirmPassword=document.getElementById("cpassword").value.trim();
     let DIV1=document.getElementById("D1");
     let DIV2=document.getElementById("D2");
+
+    if(FullName === "" || Email === "" || phoneNumber === "" || Password === "" || ConfirmPassword === ""){
+        DIV1.style.backgroundcolor = "indianred";
+        DIV1.style.color = "white";
+        DIV1.innerHTML = "All fields are required!";
+        return false;
+    }
+    
