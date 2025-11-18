@@ -30,12 +30,12 @@ function reg() {
         DIV1.innerHTML = "Password and Confirm Password must be same!";
         return false;
     }
-     DIV2.innerHTML=`
+     DIV2.innerHTML = `
     Registration Successful <br>
     Name: ${FullName} <br>
     Email: ${Email} <br>
-    PhoneNumber: ${PhoneNumber}
-    `;
+    Phone Number: ${phoneNumber}
+`;
 
     return false;
 }
