@@ -8,20 +8,20 @@ function reg() {
     let DIV2=document.getElementById("D2");
 
     if(FullName === "" || Email === "" || phoneNumber === "" || Password === "" || ConfirmPassword === ""){
-        DIV1.style.backgroundcolor = "indianred";
+        DIV1.style.backgroundColor = "indianred";
         DIV1.style.color = "white";
         DIV1.innerHTML = "All fields are required!";
         return false;
     }
     let ValidEmail = Email.includes("@");
     if(ValidEmail === false){
-        DIV1.style.backgroundcolor = "indianred";
+        DIV1.style.backgroundColor = "indianred";
         DIV1.style.color = "white";
         DIV1.innerHTML = "Invalid Email Address! Must Contain '@'";
         return false;
     }
     if(isNaN(phoneNumber)){
-        DIV1.style.backgroundcolor = "indianred";
+        DIV1.style.backgroundColor = "indianred";
         DIV1.style.color = "white";
         DIV1.innerHTML = "Phone Number must be numeric!";
         return false;
@@ -34,7 +34,7 @@ function reg() {
     Registration Successful <br>
     Name: ${FullName} <br>
     Email: ${Email} <br>
-    Phone Number: ${PhoneNumber}
+    PhoneNumber: ${PhoneNumber}
     `;
 
     return false;
@@ -42,7 +42,7 @@ function reg() {
 function AddActivity(){
     let Acti=document.getElementById("aname").value;
     let DIV=document.getElementById("D3");
-    DIV.append(acti);
+    DIV.append(Acti);
     return false;
 }
 function RemoveActivity(){
