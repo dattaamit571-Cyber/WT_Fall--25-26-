@@ -30,17 +30,20 @@ function reg() {
         DIV1.innerHTML = "Password and Confirm Password must be same!";
         return false;
     }
-    DIV2.innerHTML = "Registration Successful" <br>
+     DIV2.innerHTML=`
+    Registration Successful <br>
     Name: ${FullName} <br>
     Email: ${Email} <br>
-    Phone Number: ${phoneNumber} <br>;
+    Phone Number: ${PhoneNumber}
+    `;
+
     return false;
 }
 function AddActivity(){
     let Acti=document.getElementById("aname").value;
     let DIV=document.getElementById("D3");
     DIV.append(acti);
-    returns false;
+    return false;
 }
 function RemoveActivity(){
     let DIV4=document.getElementById("D3");
