@@ -42,6 +42,6 @@ Activity Name:
 
 </form>
 </center>
-<script src="Lab_task_Validation.js"></script> 
+<script src="Lab_task_2Validation.js"></script> 
 </body>
 </html>
