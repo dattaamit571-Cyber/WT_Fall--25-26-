@@ -27,16 +27,14 @@ function reg() {
         return false;
     }
     if(Password !=ConfirmPassword){
-        DIV1.style.backgroundcolor = "indianred";
-        DIV1.style.color = "white";
         DIV1.innerHTML = "Password and Confirm Password must be same!";
         return false;
     }
-    DIV2.innerHTML = Registration Successful <br>
-    Name: " + FullName + "<br>
-    Email: " + Email + "<br>
-    Phone Number: " + phoneNumber;
-    return true;
+    DIV2.innerHTML = "Registration Successful" <br>
+    Name: ${FullName} <br>
+    Email: ${Email} <br>
+    Phone Number: ${phoneNumber} <br>;
+    return false;
 }
 function AddActivity(){
     let Acti=document.getElementById("aname").value;
