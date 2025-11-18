@@ -24,7 +24,7 @@ Password:
 Confirm Password:
 <input type="text" id="cpassword" class="Amit" placeholder="Confirm your password"><br><br>
 
-<button id="B1" class="btn" onclick="validateForm()">Register</button>
+<button id="B1" class="btn" onclick="reg()">Register</button>
 <div id="D1" style="background-color: indianred; color: white; border-radius: 10px; border-color: red;margin: 10px 0px;"></div>
 <div id="D2" style="background-color:  lightgreen; color: white; border-radius: 10px; border-color: green;"></div>
 
