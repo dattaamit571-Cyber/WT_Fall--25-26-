@@ -41,13 +41,12 @@ function reg() {
 }
 function AddActivity(){
     let Acti=document.getElementById("aname").value;
-    let DIV=document.getElementById("D3");
-    DIV.append(Acti);
+    let DIV3=document.getElementById("D3");
+    DIV3.append(Acti);
     return false;
 }
 function RemoveActivity(){
     let DIV4=document.getElementById("D3");
-
     DIV4.remove();
     return false;
 }

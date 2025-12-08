@@ -1,7 +1,8 @@
  body{
             background-color: cadetblue;
         }
-        .xform{
+        .xform
+        {
             background-color: DeepSkyBlue;
             text-align: left;
             padding: 0px 20px;
@@ -9,12 +10,69 @@
             height: auto;
             border-radius: 20px;
         }
-        .Amit{
+        .Amit
+        {
             border-radius: 5px;
             width: 450px;
             height: 25px;
         }
-        .btn{
+        .btn
+        {
             background-color: blue;
             color: white;
         }
+
+
+
+        <?php
+
+// 1. Create associative array
+$student = array(
+    "name"  => "Amit Datta",
+    "id"    => "2025-12345",
+    "dept"  => "CSE",
+    "marks" => array(85, 78, 92, 74)
+);
+
+// 2. Print student details
+echo "<h2>Student Information</h2>";
+
+foreach ($student as $key => $value) {
+    if ($key == "marks") {
+        echo "Marks: ";
+        foreach ($value as $m) {
+            echo $m . " ";
+        }
+        echo "<br>";
+    } else {
+        echo ucfirst($key) . ": " . $value . "<br>";
+    }
+}
+
+// 3. Calculate total and average
+$total = 0;
+foreach ($student["marks"] as $mark) {
+    $total += $mark;
+}
+
+$average = $total / count($student["marks"]);
+
+// 4. Grade calculation
+if ($average >= 80) {
+    $grade = "A";
+} elseif ($average >= 60) {
+    $grade = "B";
+} elseif ($average >= 40) {
+    $grade = "C";
+} else {
+    $grade = "F";
+}
+
+// 5. Print result summary
+echo "<h2>Result Summary</h2>";
+echo "Student Name: " . $student["name"] . "<br>";
+echo "Total Marks: " . $total . "<br>";
+echo "Average Marks: " . $average . "<br>";
+echo "Grade: " . $grade . "<br>";
+
+?>
