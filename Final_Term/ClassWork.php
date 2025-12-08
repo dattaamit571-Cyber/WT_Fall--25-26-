@@ -5,3 +5,4 @@ $student = array(
     "dept"  => "CSE",
     "marks" => array(85, 78, 92, 74)
 );
+echo "<h2>Student Information</h2>";
