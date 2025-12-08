@@ -21,3 +21,4 @@ $total = 0;
 foreach ($student["marks"] as $mark) {
     $total += $mark;
 }
+$average = $total / count($student["marks"]);
