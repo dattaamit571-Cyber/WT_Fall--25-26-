@@ -1,7 +1,7 @@
   <?php
   $student = array(
-    "name"  => "Amit Datta",
-    "id"    => "2025-12345",
+    "name"  => "Amit Datta dip",
+    "id"    => "22-48860-3",
     "dept"  => "CSE",
     "marks" => array(85, 78, 92, 74)
 );
