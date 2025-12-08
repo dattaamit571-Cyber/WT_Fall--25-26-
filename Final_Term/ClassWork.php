@@ -31,3 +31,10 @@ if ($average >= 80) {
 } else {
     $grade = "F";
 }
+echo "<h2>Result Summary</h2>";
+echo "Student Name: " . $student["name"] . "<br>";
+echo "Total Marks: " . $total . "<br>";
+echo "Average Marks: " . $average . "<br>";
+echo "Grade: " . $grade . "<br>";
+
+?>
