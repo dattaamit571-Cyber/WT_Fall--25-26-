@@ -22,3 +22,12 @@ foreach ($student["marks"] as $mark) {
     $total += $mark;
 }
 $average = $total / count($student["marks"]);
+if ($average >= 80) {
+    $grade = "A";
+} elseif ($average >= 60) {
+    $grade = "B";
+} elseif ($average >= 40) {
+    $grade = "C";
+} else {
+    $grade = "F";
+}
