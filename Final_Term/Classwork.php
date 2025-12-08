@@ -17,3 +17,7 @@ foreach ($student as $key => $value) {
         echo ucfirst($key) . ": " . $value . "<br>";
     }
 }
+$total = 0;
+foreach ($student["marks"] as $mark) {
+    $total += $mark;
+}
