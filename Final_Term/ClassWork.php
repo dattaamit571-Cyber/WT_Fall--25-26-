@@ -1,7 +1,7 @@
 <?php
 $student = array(
-    "name"  => "Amit Datta",
-    "id"    => "2025-12345",
+    "name"  => "Amit Datta Dip",
+    "id"    => "22-48860-3",
     "dept"  => "CSE",
     "marks" => array(85, 78, 92, 74)
 );
@@ -16,4 +16,8 @@ foreach ($student as $key => $value) {
     } else {
         echo ucfirst($key) . ": " . $value . "<br>";
     }
+}
+$total = 0;
+foreach ($student["marks"] as $mark) {
+    $total += $mark;
 }
