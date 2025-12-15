@@ -81,4 +81,11 @@ function test_input($data)
     <input type="radio" name="gender" value="Other" <?php if($gender=="Other") echo "checked"; ?>> Other
     <span style="color:red;"><?php echo $genderErr; ?></span>
     <br><br>
+    Degree:
+    <input type="checkbox" name="degree[]" value="SSC"> SSC
+    <input type="checkbox" name="degree[]" value="HSC"> HSC
+    <input type="checkbox" name="degree[]" value="BSc"> BSc
+    <input type="checkbox" name="degree[]" value="MSc"> MSc
+    <span style="color:red;"><?php echo $degreeErr; ?></span>
+    <br><br>
     
