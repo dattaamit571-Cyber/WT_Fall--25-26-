@@ -19,4 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $name = test_input($_POST["name"]);
     }
+
+    if (empty($_POST["dob"])) {
+        $dobErr = "DOB is required";
+    } else {
+        $dob = $_POST["dob"];
+    }
     
