@@ -1,56 +1,137 @@
 <!DOCTYPE html>
 <html>
-<head><title>PHP Code</title></head>
- 
+<head>
+    <title>PHP Form Validation</title>
+</head>
+
 <body>
-<h1>This is our 1st php code </h1>    
- 
+
+<h1>ASSESSMENT TASK</h1>
+
 <?php
- 
-$name= "";
-$nameerror= "";
- 
-if (empty ($_POST["name"]))
-{
-$nameerror="Name is req";
+$name = $dob = $email = $gender = $blood = "";
+$degree = [];
+
+$nameErr = $dobErr = $emailErr = $genderErr = $degreeErr = $bloodErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // NAME
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required";
+    } else {
+        $name = test_input($_POST["name"]);
+    }
+
+    // DOB
+    if (empty($_POST["dob"])) {
+        $dobErr = "DOB is required";
+    } else {
+        $dob = $_POST["dob"];
+    }
+
+    // EMAIL
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+    } else {
+        $email = test_input($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";
+        }
+    }
+
+    // GENDER
+    if (empty($_POST["gender"])) {
+        $genderErr = "Gender is required";
+    } else {
+        $gender = $_POST["gender"];
+    }
+
+    // DEGREE (Checkbox)
+    if (empty($_POST["degree"])) {
+        $degreeErr = "Select at least one degree";
+    } else {
+        $degree = $_POST["degree"];
+    }
+
+    // BLOOD GROUP
+    if (empty($_POST["blood"])) {
+        $bloodErr = "Blood group is required";
+    } else {
+        $blood = $_POST["blood"];
+    }
 }
-else{
-$name= test_input($_POST["name"]);
-if (!preg_match("/^[a-zA-Z ]*$/",$name))
-{
-    $nameerror ="Only letters and white space allowed";
-}
- 
-}
- 
+
 function test_input($data)
 {
-$data = trim($data);
-return $data;
+    return trim($data);
 }
- 
 ?>
- 
+
 <form method="post" action="">
- 
-Name: <input type="text" name="name" value="<?php echo $name;?>">
-<?php echo $nameerror; ?>
- 
-Age: <input type="number" name="age" >
- 
-Email : <input type="text" name="email">
- 
-<input type="submit" name="submit" value="Submit">
+
+    Name:
+    <input type="text" name="name" value="<?php echo $name; ?>">
+    <span style="color:red;"><?php echo $nameErr; ?></span>
+    <br><br>
+
+    DOB:
+    <input type="date" name="dob" value="<?php echo $dob; ?>">
+    <span style="color:red;"><?php echo $dobErr; ?></span>
+    <br><br>
+
+    Email:
+    <input type="text" name="email" value="<?php echo $email; ?>">
+    <span style="color:red;"><?php echo $emailErr; ?></span>
+    <br><br>
+
+    Gender:
+    <input type="radio" name="gender" value="Male" <?php if($gender=="Male") echo "checked"; ?>> Male
+    <input type="radio" name="gender" value="Female" <?php if($gender=="Female") echo "checked"; ?>> Female
+    <input type="radio" name="gender" value="Other" <?php if($gender=="Other") echo "checked"; ?>> Other
+    <span style="color:red;"><?php echo $genderErr; ?></span>
+    <br><br>
+
+    Degree:
+    <input type="checkbox" name="degree[]" value="SSC"> SSC
+    <input type="checkbox" name="degree[]" value="HSC"> HSC
+    <input type="checkbox" name="degree[]" value="BSc"> BSc
+    <input type="checkbox" name="degree[]" value="MSc"> MSc
+    <span style="color:red;"><?php echo $degreeErr; ?></span>
+    <br><br>
+
+    Blood Group:
+    <select name="blood">
+        <option value="">Select</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+    </select>
+    <span style="color:red;"><?php echo $bloodErr; ?></span>
+    <br><br>
+
+    <input type="submit" value="Submit">
 </form>
- 
+
 <?php
-if($_SERVER["REQUEST_METHOD"]== "POST" && empty($nameerror))
-{
-echo "<h3> Your Input: </h3>";
-echo "Name: ".$name. "<br>";
- 
+if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+    empty($nameErr) && empty($dobErr) && empty($emailErr) &&
+    empty($genderErr) && empty($degreeErr) && empty($bloodErr)) {
+
+    echo "<h3>Your Input:</h3>";
+    echo "Name: $name <br>";
+    echo "DOB: $dob <br>";
+    echo "Email: $email <br>";
+    echo "Gender: $gender <br>";
+    echo "Degree: " . implode(", ", $degree) . "<br>";
+    echo "Blood Group: $blood <br>";
 }
- 
 ?>
+
 </body>
 </html>
