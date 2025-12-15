@@ -25,4 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $dob = $_POST["dob"];
     }
-    
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+    } else {
+        $email = test_input($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";
+        }
+    }
