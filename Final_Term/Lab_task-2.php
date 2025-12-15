@@ -104,3 +104,7 @@ function test_input($data)
     <br><br>
     <input type="submit" value="Submit">
 </form>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+empty($nameErr) && empty($dobErr) && empty($emailErr) &&
+empty($genderErr) && empty($degreeErr) && empty($bloodErr)) {
