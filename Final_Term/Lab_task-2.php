@@ -58,3 +58,10 @@ function test_input($data)
     return trim($data);
 }
 ?>
+<form method="post" action="">
+
+    Name:
+    <input type="text" name="name" value="<?php echo $name; ?>">
+    <span style="color:red;"><?php echo $nameErr; ?></span>
+    <br><br>
+    
