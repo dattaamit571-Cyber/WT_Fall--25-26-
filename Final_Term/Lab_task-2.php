@@ -108,4 +108,14 @@ function test_input($data)
 if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 empty($nameErr) && empty($dobErr) && empty($emailErr) &&
 empty($genderErr) && empty($degreeErr) && empty($bloodErr)) {
-    echo
+    echo "<h2>Your Input:</h2>";
+    echo "Name: " . $name . "<br>";
+    echo "DOB: " . $dob . "<br>";
+    echo "Email: " . $email . "<br>";
+    echo "Gender: " . $gender . "<br>";
+    echo "Degree: " . implode(", ", $degree) . "<br>";
+    echo "Blood Group: " . $blood . "<br>";
+}
+?>
+</body>
+</html>
