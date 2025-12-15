@@ -39,9 +39,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $gender = $_POST["gender"];
     }
-    
+
     if (empty($_POST["degree"])) {
         $degreeErr = "Select at least one degree";
     } else {
         $degree = $_POST["degree"];
     }
+        // BLOOD GROUP
+    if (empty($_POST["blood"])) {
+        $bloodErr = "Blood group is required";
+    } else {
+        $blood = $_POST["blood"];
+    }
+}
