@@ -90,3 +90,6 @@ function test_input($data)
     <br><br>
     Blood Group:
     <select name="blood">
+        <option value="">Select</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
