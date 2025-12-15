@@ -7,3 +7,6 @@
 <body>
 
 <h1>ASSESSMENT TASK</h1>
+<?php
+$name = $dob = $email = $gender = $blood = "";
+$degree = [];
