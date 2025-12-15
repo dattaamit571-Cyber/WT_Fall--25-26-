@@ -65,3 +65,7 @@ function test_input($data)
     <span style="color:red;"><?php echo $nameErr; ?></span>
     <br><br>
     
+    DOB:
+    <input type="date" name="dob" value="<?php echo $dob; ?>">
+    <span style="color:red;"><?php echo $dobErr; ?></span>
+    <br><br>
