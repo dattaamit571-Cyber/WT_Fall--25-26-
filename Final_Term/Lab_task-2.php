@@ -88,4 +88,5 @@ function test_input($data)
     <input type="checkbox" name="degree[]" value="MSc"> MSc
     <span style="color:red;"><?php echo $degreeErr; ?></span>
     <br><br>
-    
+    Blood Group:
+    <select name="blood">
