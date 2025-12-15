@@ -69,9 +69,16 @@ function test_input($data)
     <input type="date" name="dob" value="<?php echo $dob; ?>">
     <span style="color:red;"><?php echo $dobErr; ?></span>
     <br><br>
-    
+
     Email:
     <input type="text" name="email" value="<?php echo $email; ?>">
     <span style="color:red;"><?php echo $emailErr; ?></span>
+    <br><br>
+    
+    Gender:
+    <input type="radio" name="gender" value="Male" <?php if($gender=="Male") echo "checked"; ?>> Male
+    <input type="radio" name="gender" value="Female" <?php if($gender=="Female") echo "checked"; ?>> Female
+    <input type="radio" name="gender" value="Other" <?php if($gender=="Other") echo "checked"; ?>> Other
+    <span style="color:red;"><?php echo $genderErr; ?></span>
     <br><br>
     
