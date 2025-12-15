@@ -108,3 +108,4 @@ function test_input($data)
 if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 empty($nameErr) && empty($dobErr) && empty($emailErr) &&
 empty($genderErr) && empty($degreeErr) && empty($bloodErr)) {
+    echo
