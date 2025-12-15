@@ -5,7 +5,6 @@
 <body>
 <h1>This is our 1st php code </h1>    
  
- 
 <?php
  
 $name= "";
@@ -32,7 +31,6 @@ return $data;
  
 ?>
  
- 
 <form method="post" action="">
  
 Name: <input type="text" name="name" value="<?php echo $name;?>">
@@ -42,10 +40,8 @@ Age: <input type="number" name="age" >
  
 Email : <input type="text" name="email">
  
- 
 <input type="submit" name="submit" value="Submit">
 </form>
- 
  
 <?php
 if($_SERVER["REQUEST_METHOD"]== "POST" && empty($nameerror))
@@ -56,9 +52,5 @@ echo "Name: ".$name. "<br>";
 }
  
 ?>
- 
- 
- 
- 
 </body>
 </html>
