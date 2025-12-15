@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $dob = $_POST["dob"];
     }
+
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
     } else {
@@ -45,10 +46,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $degree = $_POST["degree"];
     }
-        // BLOOD GROUP
+
     if (empty($_POST["blood"])) {
         $bloodErr = "Blood group is required";
     } else {
         $blood = $_POST["blood"];
     }
 }
+function test_input($data)
+{
+    return trim($data);
+}
+?>
