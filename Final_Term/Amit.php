@@ -12,11 +12,11 @@ $nameerror= "";
  
 if (empty ($_POST["name"]))
 {
-$nameerror="Name is req"; // value empty
+$nameerror="Name is req";
 }
 else{
-$name= test_input($_POST["name"]); //clean out input
-if (!preg_match("/^[a-zA-Z ]*$/",$name))  // only letter and middle space
+$name= test_input($_POST["name"]);
+if (!preg_match("/^[a-zA-Z ]*$/",$name))
 {
     $nameerror ="Only letters and white space allowed";
 }
@@ -25,7 +25,7 @@ if (!preg_match("/^[a-zA-Z ]*$/",$name))  // only letter and middle space
  
 function test_input($data)
 {
-$data = trim($data); // trim amr previous data remove kore dai
+$data = trim($data);
 return $data;
 }
  
