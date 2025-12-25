@@ -59,7 +59,7 @@
             transform: scale(1.05);
         }
     </style>
-</Head>
+    </Head>
 <body>
     <div class="welcome-card">
         <h1>Welcome to</h1>
