@@ -12,7 +12,7 @@
 }
    body {
             height: 100vh;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: linear-gradient(135deg, royalblue,Purple);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -55,7 +55,7 @@
             transition: 0.3s;
         }
  .btn-group a:hover {
-            background: #e0e0e0;
+            background: white;
             transform: scale(1.05);
         }
     </style>
