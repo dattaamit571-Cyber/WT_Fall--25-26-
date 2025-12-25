@@ -45,3 +45,12 @@
             justify-content: center;
             gap: 20px;
         }
+.btn-group a {
+            text-decoration: none;
+            background: #fff;
+            color: #2575fc;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
