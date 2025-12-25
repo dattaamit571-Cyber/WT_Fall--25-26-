@@ -9,7 +9,7 @@
       padding: 0;
       box-sizing: border-box;
       font-family: Arial, sans-serif;
-    }
+}
    body {
             height: 100vh;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -24,10 +24,9 @@
             border-radius: 20px;
             width: 350px;
             text-align: center;
-            color: #6f1bceff;
+            color: #fff;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }          box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
+        } 
  .welcome-card h1 {
             font-size: 36px;
             margin-bottom: 10px;
@@ -48,7 +47,7 @@
         }
 .btn-group a {
             text-decoration: none;
-            background: #642222ff;
+            background: #fff;
             color: #2575fc;
             padding: 14px 28px;
             border-radius: 30px;
@@ -56,7 +55,7 @@
             transition: 0.3s;
         }
  .btn-group a:hover {
-            background: #ce0d0dff;
+            background: #e0e0e0;
             transform: scale(1.05);
         }
     </style>
