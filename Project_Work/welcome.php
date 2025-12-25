@@ -40,3 +40,8 @@
             margin-bottom: 35px;
             line-height: 1.5;
         }
+ .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
