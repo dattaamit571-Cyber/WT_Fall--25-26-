@@ -54,3 +54,19 @@
             font-weight: bold;
             transition: 0.3s;
         }
+ .btn-group a:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+    </style>
+</Head>
+<body>
+    <div class="welcome-card">
+        <h1>Welcome to</h1>
+        <h2>QuizMaster</h2>
+        <p>Your ultimate destination for fun and challenging quizzes! Test your knowledge across various topics and see how you stack up against others.</p>
+        <div class="btn-group">
+            <a href="login.php">Login</a>
+            <a href="register.php">Register</a>
+        </div>
+    </div>
