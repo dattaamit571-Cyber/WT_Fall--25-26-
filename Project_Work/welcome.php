@@ -24,7 +24,7 @@
             border-radius: 20px;
             width: 350px;
             text-align: center;
-            color: #fff;
+            color: white;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         } 
  .welcome-card h1 {
@@ -47,8 +47,8 @@
         }
 .btn-group a {
             text-decoration: none;
-            background: #fff;
-            color: #2575fc;
+            background: white;
+            color: red;
             padding: 14px 28px;
             border-radius: 30px;
             font-weight: bold;
