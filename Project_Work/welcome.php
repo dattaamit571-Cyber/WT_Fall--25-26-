@@ -11,10 +11,9 @@
       font-family: Arial, sans-serif;
     }
     body {
-        background-color: #f0f0f0;
+        background-color: linear-gradient(135deg, #6a11cb, #2575fc);
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
     }
-    
