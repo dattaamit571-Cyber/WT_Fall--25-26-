@@ -17,8 +17,8 @@
         align-items: center;
         height: 100vh;
     }
-.welcome-card {
-    background: rgba(255, 255, 255, 0.15);
+ .welcome-card {
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             padding: 50px 40px;
             border-radius: 20px;
@@ -26,6 +26,7 @@
             text-align: center;
             color: #fff;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }          box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
  .welcome-card h1 {
             font-size: 36px;
@@ -47,7 +48,7 @@
         }
 .btn-group a {
             text-decoration: none;
-            background: #fff;
+            background: #642222ff;
             color: #2575fc;
             padding: 14px 28px;
             border-radius: 30px;
@@ -55,7 +56,7 @@
             transition: 0.3s;
         }
  .btn-group a:hover {
-            background: #e0e0e0;
+            background: #ce0d0dff;
             transform: scale(1.05);
         }
     </style>
