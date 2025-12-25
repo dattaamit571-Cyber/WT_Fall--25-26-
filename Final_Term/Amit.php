@@ -1,137 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>PHP Form Validation</title>
+    <meta charset="UTF-8">
+    <title>QuizMaster</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            width: 350px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .welcome-card h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-card h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-card p {
+            font-size: 16px;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-group a {
+            text-decoration: none;
+            background: #fff;
+            color: #2575fc;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-group a:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>ASSESSMENT TASK</h1>
+    <div class="welcome-card">
+        <h1>Welcome</h1>
+        <h2>to QuizMaster</h2>
 
-<?php
-$name = $dob = $email = $gender = $blood = "";
-$degree = [];
+        <p>
+            Start creating quizzes, take tests,  
+            and track your performance!
+        </p>
 
-$nameErr = $dobErr = $emailErr = $genderErr = $degreeErr = $bloodErr = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // NAME
-    if (empty($_POST["name"])) {
-        $nameErr = "Name is required";
-    } else {
-        $name = test_input($_POST["name"]);
-    }
-
-    // DOB
-    if (empty($_POST["dob"])) {
-        $dobErr = "DOB is required";
-    } else {
-        $dob = $_POST["dob"];
-    }
-
-    // EMAIL
-    if (empty($_POST["email"])) {
-        $emailErr = "Email is required";
-    } else {
-        $email = test_input($_POST["email"]);
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Invalid email format";
-        }
-    }
-
-    // GENDER
-    if (empty($_POST["gender"])) {
-        $genderErr = "Gender is required";
-    } else {
-        $gender = $_POST["gender"];
-    }
-
-    // DEGREE (Checkbox)
-    if (empty($_POST["degree"])) {
-        $degreeErr = "Select at least one degree";
-    } else {
-        $degree = $_POST["degree"];
-    }
-
-    // BLOOD GROUP
-    if (empty($_POST["blood"])) {
-        $bloodErr = "Blood group is required";
-    } else {
-        $blood = $_POST["blood"];
-    }
-}
-
-function test_input($data)
-{
-    return trim($data);
-}
-?>
-
-<form method="post" action="">
-
-    Name:
-    <input type="text" name="name" value="<?php echo $name; ?>">
-    <span style="color:red;"><?php echo $nameErr; ?></span>
-    <br><br>
-
-    DOB:
-    <input type="date" name="dob" value="<?php echo $dob; ?>">
-    <span style="color:red;"><?php echo $dobErr; ?></span>
-    <br><br>
-
-    Email:
-    <input type="text" name="email" value="<?php echo $email; ?>">
-    <span style="color:red;"><?php echo $emailErr; ?></span>
-    <br><br>
-
-    Gender:
-    <input type="radio" name="gender" value="Male" <?php if($gender=="Male") echo "checked"; ?>> Male
-    <input type="radio" name="gender" value="Female" <?php if($gender=="Female") echo "checked"; ?>> Female
-    <input type="radio" name="gender" value="Other" <?php if($gender=="Other") echo "checked"; ?>> Other
-    <span style="color:red;"><?php echo $genderErr; ?></span>
-    <br><br>
-
-    Degree:
-    <input type="checkbox" name="degree[]" value="SSC"> SSC
-    <input type="checkbox" name="degree[]" value="HSC"> HSC
-    <input type="checkbox" name="degree[]" value="BSc"> BSc
-    <input type="checkbox" name="degree[]" value="MSc"> MSc
-    <span style="color:red;"><?php echo $degreeErr; ?></span>
-    <br><br>
-
-    Blood Group:
-    <select name="blood">
-        <option value="">Select</option>
-        <option value="A+">A+</option>
-        <option value="A-">A-</option>
-        <option value="B+">B+</option>
-        <option value="B-">B-</option>
-        <option value="O+">O+</option>
-        <option value="O-">O-</option>
-        <option value="AB+">AB+</option>
-        <option value="AB-">AB-</option>
-    </select>
-    <span style="color:red;"><?php echo $bloodErr; ?></span>
-    <br><br>
-
-    <input type="submit" value="Submit">
-</form>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" &&
-    empty($nameErr) && empty($dobErr) && empty($emailErr) &&
-    empty($genderErr) && empty($degreeErr) && empty($bloodErr)) {
-
-    echo "<h3>Your Input:</h3>";
-    echo "Name: $name <br>";
-    echo "DOB: $dob <br>";
-    echo "Email: $email <br>";
-    echo "Gender: $gender <br>";
-    echo "Degree: " . implode(", ", $degree) . "<br>";
-    echo "Blood Group: $blood <br>";
-}
-?>
+        <div class="btn-group">
+            <a href="login.php">Login</a>
+            <a href="register.php">Create Account</a>
+        </div>
+    </div>
 
 </body>
 </html>

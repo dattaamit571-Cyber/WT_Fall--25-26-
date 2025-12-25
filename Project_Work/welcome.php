@@ -10,13 +10,13 @@
       box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
-    body {
-        background-color: linear-gradient(135deg, #6a11cb, #2575fc);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+   body {
+            height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
  .welcome-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -24,7 +24,7 @@
             border-radius: 20px;
             width: 350px;
             text-align: center;
-            color: #fff;
+            color: #6f1bceff;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }          box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
