@@ -35,3 +35,8 @@
             font-size: 32px;
             margin-bottom: 20px;
         }
+ .welcome-card p {
+            font-size: 16px;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
