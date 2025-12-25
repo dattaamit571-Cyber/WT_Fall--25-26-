@@ -17,3 +17,17 @@
         align-items: center;
         height: 100vh;
     }
+.welcome-card {
+    background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            width: 350px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+ .welcome-card h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
