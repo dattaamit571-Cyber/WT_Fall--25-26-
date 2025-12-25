@@ -31,3 +31,7 @@
             font-size: 36px;
             margin-bottom: 10px;
         }
+ .welcome-card h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
