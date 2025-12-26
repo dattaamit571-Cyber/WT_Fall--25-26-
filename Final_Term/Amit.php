@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>QuizMaster</title>
+    <title>Login - QuizMaster</title>
 
     <style>
         * {
@@ -14,78 +14,138 @@
 
         body {
             height: 100vh;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: #f2f2f2;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
 
-        .welcome-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 50px 40px;
-            border-radius: 20px;
-            width: 350px;
-            text-align: center;
-            color: #fff;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        .login-card {
+            background: white;
+            width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .welcome-card h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .welcome-card h2 {
-            font-size: 32px;
+        h2 {
             margin-bottom: 20px;
         }
 
-        .welcome-card p {
-            font-size: 16px;
-            margin-bottom: 35px;
-            line-height: 1.5;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .btn-group a {
-            text-decoration: none;
-            background: #fff;
-            color: #2575fc;
-            padding: 14px 28px;
-            border-radius: 30px;
+        label {
             font-weight: bold;
-            transition: 0.3s;
+            display: block;
+            margin-bottom: 5px;
         }
 
-        .btn-group a:hover {
-            background: #e0e0e0;
-            transform: scale(1.05);
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1e73d8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #155bb5;
+        }
+
+        .remember {
+            margin-bottom: 15px;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .register-link a {
+            text-decoration: none;
+            color: #1e73d8;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="welcome-card">
-        <h1>Welcome</h1>
-        <h2>to QuizMaster</h2>
+<div class="login-card">
+    <h2>Login to Your Account</h2>
 
-        <p>
-            Start creating quizzes, take tests,  
-            and track your performance!
-        </p>
+    <form onsubmit="return validateForm()">
+        <label>Email Address</label>
+        <input type="text" id="email">
+        <div id="emailError" class="error"></div>
 
-        <div class="btn-group">
-            <a href="login.php">Login</a>
-            <a href="register.php">Create Account</a>
+        <label>Password</label>
+        <input type="password" id="password">
+        <div id="passwordError" class="error"></div>
+
+        <div class="remember">
+            <input type="checkbox"> Remember Me
         </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="register-link">
+        Don't have an account?
+        <a href="register.php">Register here</a>
     </div>
+</div>
+
+<script>
+    function validateForm() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        let emailError = document.getElementById("emailError");
+        let passwordError = document.getElementById("passwordError");
+
+        emailError.innerHTML = "";
+        passwordError.innerHTML = "";
+
+        let isValid = true;
+
+        // Email validation
+        if (email === "") {
+            emailError.innerHTML = "Email is required";
+            isValid = false;
+        } 
+        else if (!email.includes("@")) {
+            emailError.innerHTML = "Enter a valid email";
+            isValid = false;
+        }
+
+        // Password validation
+        if (password === "") {
+            passwordError.innerHTML = "Password is required";
+            isValid = false;
+        } 
+        else if (password.length < 6) {
+            passwordError.innerHTML = "Password must be at least 6 characters";
+            isValid = false;
+        }
+
+        return isValid; // true = submit, false = stop
+    }
+</script>
 
 </body>
 </html>
