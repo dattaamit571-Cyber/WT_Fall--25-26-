@@ -57,3 +57,8 @@ if (isset($_SESSION['user_id'])) {
             line-height: 1.5;
             color: #e0e0e0;
         }
+         .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
