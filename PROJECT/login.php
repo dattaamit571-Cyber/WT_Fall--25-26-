@@ -114,3 +114,7 @@ session_start();
             <input type="password" id="loginPassword" name="loginPassword" placeholder="Your password"
                    value="<?= isset($_COOKIE['remembered_password']) ? htmlspecialchars($_COOKIE['remembered_password']) : '' ?>" required>
         </div>
+     <div class="form-group remember-me">
+            
+        <label><input type="checkbox" name="remember_me" <?= isset($_COOKIE['remembered_email']) ? 'checked' : '' ?>> Remember Me</label>
+        </div>
