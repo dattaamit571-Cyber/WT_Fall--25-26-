@@ -100,13 +100,17 @@ session_start();
     <div class="error-message"><?= htmlspecialchars($loginError) ?></div>
     <?php endif; ?>
 
-     <form id="loginForm" action="" method="POST" onsubmit="return validateLogin();">
+    <form id="loginForm" action="" method="POST" onsubmit="return validateLogin();">
        
     <div class="form-group">
             <label for="loginEmail">Email Address</label>
             <input type="text" id="loginEmail" name="loginEmail" placeholder="example@email.com"
-                   value="<?= isset($_COOKIE['remembered_email']) ? htmlspecialchars($_COOKIE['remembered_email']) : '' ?>" required>
+            value="<?= isset($_COOKIE['remembered_email']) ? htmlspecialchars($_COOKIE['remembered_email']) : '' ?>" required>
         
                 </div>
 
-                
+<div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" name="loginPassword" placeholder="Your password"
+                   value="<?= isset($_COOKIE['remembered_password']) ? htmlspecialchars($_COOKIE['remembered_password']) : '' ?>" required>
+        </div>
