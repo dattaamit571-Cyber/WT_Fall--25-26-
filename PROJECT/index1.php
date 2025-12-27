@@ -75,4 +75,9 @@ if (isset($_SESSION['user_id'])) {
             text-align: center;
             user-select: none;
             cursor: pointer;
+        }
+        .btn:hover {
+            background: #2575fc;
+            color: #fff;
+            box-shadow: 0 6px 25px rgba(37,117,252,0.7);
         }  
