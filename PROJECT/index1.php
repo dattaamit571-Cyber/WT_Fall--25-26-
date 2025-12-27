@@ -51,4 +51,9 @@ if (isset($_SESSION['user_id'])) {
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
-        
+           p {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            line-height: 1.5;
+            color: #e0e0e0;
+        }
