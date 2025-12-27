@@ -53,4 +53,11 @@ session_start();
             font-weight: 600;
             margin-bottom: 5px;
         }
-        
+     input[type="text"], input[type="password"] 
+        {
+            width: 100%;
+            padding: 8px 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }    
