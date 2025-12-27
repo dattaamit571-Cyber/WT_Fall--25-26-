@@ -30,4 +30,14 @@ if (isset($_SESSION['user_id'])) {
             align-items: center;
             padding: 20px;
         }
-        
+              .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px 60px;
+            border-radius: 15px;
+              box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            max-width: 400px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+             -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
