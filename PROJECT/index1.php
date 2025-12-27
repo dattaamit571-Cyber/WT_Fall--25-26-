@@ -12,4 +12,22 @@ if (isset($_SESSION['user_id'])) {
     <meta charset+"UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Quiz Platform</title>
-    
+  <style>
+  
+
+   * {
+         box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
