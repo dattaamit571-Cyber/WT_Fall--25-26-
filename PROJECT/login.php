@@ -105,16 +105,24 @@ session_start();
     <div class="form-group">
             <label for="loginEmail">Email Address</label>
             <input type="text" id="loginEmail" name="loginEmail" placeholder="example@email.com"
-            value="<?= isset($_COOKIE['remembered_email']) ? htmlspecialchars($_COOKIE['remembered_email']) : '' ?>" required>
+             value="<?= isset($_COOKIE['remembered_email']) ? htmlspecialchars($_COOKIE['remembered_email']) : '' ?>" required>
         
-                </div>
+    </div>
 
 <div class="form-group">
             <label for="loginPassword">Password</label>
             <input type="password" id="loginPassword" name="loginPassword" placeholder="Your password"
-                   value="<?= isset($_COOKIE['remembered_password']) ? htmlspecialchars($_COOKIE['remembered_password']) : '' ?>" required>
-        </div>
-     <div class="form-group remember-me">
-            
+             value="<?= isset($_COOKIE['remembered_password']) ? htmlspecialchars($_COOKIE['remembered_password']) : '' ?>" required>
+    </div>
+
+     <div class="form-group remember-me">   
         <label><input type="checkbox" name="remember_me" <?= isset($_COOKIE['remembered_email']) ? 'checked' : '' ?>> Remember Me</label>
         </div>
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <div class="form-footer">
+     Don't have an account? <a href="register.php">Register here</a>
+    </div>
+</div>
