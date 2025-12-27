@@ -45,3 +45,10 @@ if (isset($_SESSION['user_id'])) {
             transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.3);
         }
+         h1 {
+            font-weight: 600;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
