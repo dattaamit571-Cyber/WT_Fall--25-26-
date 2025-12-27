@@ -28,4 +28,29 @@ session_start();
     width: 16px;
     height: 16px;
     cursor: pointer;
-}
+ }
+ .error-message{
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+ .login-container{
+            max-width: 400px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+.form-group 
+        
+        {
+            margin-bottom: 15px;
+        }
+     label 
+     {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
