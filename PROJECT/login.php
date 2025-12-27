@@ -86,4 +86,18 @@ session_start();
         
         {
             margin-bottom: 15px;
-        }      
+        } 
+        
+        
+    </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>Login to Your Account</h1>
+
+    <?php if (!empty($loginError)): ?>
+    <div class="error-message"><?= htmlspecialchars($loginError) ?></div>
+    <?php endif; ?>
+
+    
