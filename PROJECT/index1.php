@@ -61,4 +61,18 @@ if (isset($_SESSION['user_id'])) {
             display: flex;
             justify-content: center;
             gap: 20px;
-        }              
+        }
+                .btn {
+            background: #fff;
+            color: #2575fc;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.4);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-width: 120px;
+            text-align: center;
+            user-select: none;
+            cursor: pointer;
+        }  
