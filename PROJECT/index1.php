@@ -80,4 +80,25 @@ if (isset($_SESSION['user_id'])) {
             background: #2575fc;
             color: #fff;
             box-shadow: 0 6px 25px rgba(37,117,252,0.7);
-        }  
+        } 
+        
+        
+    </style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="Welcome container">
+  <h1>Welcome to QuizMaster</h1>
+  
+  <p>Start creating quizzes, take tests, and track your performance!</p>
+
+   <div class="button-group">
+
+            <a href="login.php" class="btn" role="button">Login</a>
+
+            <a href="register.php" class="btn" role="button">Create Account</a>
+
+
+        </div>
+    </div>
+</body>
+</html>
