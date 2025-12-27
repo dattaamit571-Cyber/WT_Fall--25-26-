@@ -126,3 +126,26 @@ session_start();
      Don't have an account? <a href="register.php">Register here</a>
     </div>
 </div>
+
+
+
+<script src="js/validation.js"></script>
+<script>
+
+function validateLogin() 
+
+{
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
+
+    if (!email || !password) 
+    {
+        alert("Please fill  all fields.");
+        return false;
+    }
+   
+    return true;
+}
+</script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 <?php
 session_start();
+  
+  // starting db connnection
 
  $servername = "localhost";
  $db_username = "root";
@@ -222,6 +224,7 @@ function validateLogin()
         return false;
     }
    
+    return true;
 }
 </script>
 </body>
