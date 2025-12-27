@@ -88,8 +88,7 @@ session_start();
 
         .btn {
             background: #fff;
-              color: #2575fc;
-
+            color: #2575fc;
             padding: 12px 30px;
             font-weight: 600;
             text-decoration: none;

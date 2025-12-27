@@ -61,4 +61,4 @@ if (isset($_SESSION['user_id'])) {
             display: flex;
             justify-content: center;
             gap: 20px;
-        }
+        }              
