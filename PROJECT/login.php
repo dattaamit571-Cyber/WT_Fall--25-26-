@@ -60,4 +60,30 @@ session_start();
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 5px;
-        }    
+        }
+.btn 
+        
+        {
+            background-color: #1976d2;
+            color: white;
+            font-weight: 600;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+          .btn:hover {
+            background-color: #155a9f;
+        }
+        .form-footer 
+        
+        {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .remember-me 
+        
+        {
+            margin-bottom: 15px;
+        }      
