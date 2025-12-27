@@ -41,3 +41,7 @@ if (isset($_SESSION['user_id'])) {
              -webkit-backdrop-filter: blur(10px);
             transition: transform 0.3s ease;
         }
+          .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
