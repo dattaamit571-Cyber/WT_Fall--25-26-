@@ -1,151 +1,133 @@
+<?php
+session_start();
+
+//checking user logins
+
+
+   if (isset($_SESSION['user_id'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login - QuizMaster</title>
+  <head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Online Quiz Platform</title>
+<style>
+       
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    <style>
-        * {
+       
+
+
+/* Some css styles */
+
+
+
+  * {
+         box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
 
-        body {
-            height: 100vh;
-            background: #f2f2f2;
+  body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
-        .login-card {
-            background: white;
-            width: 400px;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+              .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px 60px;
+            border-radius: 15px;
+              box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            max-width: 400px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+             -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
         }
 
-        h2 {
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+ h1 {
+            font-weight: 600;
+            font-size: 2.8rem;
             margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
+        p {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            line-height: 1.5;
+            color: #e0e0e0;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+       
+       
+       
+       
+       
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
-        .error {
-            color: red;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
+        .btn {
+            background: #fff;
+              color: #2575fc;
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #1e73d8;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.4);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-width: 120px;
+            text-align: center;
+            user-select: none;
             cursor: pointer;
         }
 
-        button:hover {
-            background: #155bb5;
+        .btn:hover {
+            background: #2575fc;
+            color: #fff;
+            box-shadow: 0 6px 25px rgba(37,117,252,0.7);
         }
 
-        .remember {
-            margin-bottom: 15px;
-        }
-
-        .register-link {
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .register-link a {
-            text-decoration: none;
-            color: #1e73d8;
-        }
-    </style>
+        </style>
 </head>
-
 <body>
+<div class="container" role="main" aria-label="Welcome container">
+        
 
-<div class="login-card">
-    <h2>Login to Your Account</h2>
 
-    <form onsubmit="return validateForm()">
-        <label>Email Address</label>
-        <input type="text" id="email">
-        <div id="emailError" class="error"></div>
+<h1>Welcome to QuizMaster</h1>
+        
 
-        <label>Password</label>
-        <input type="password" id="password">
-        <div id="passwordError" class="error"></div>
+<p>Start creating quizzes, take tests, and track your performance!</p>
 
-        <div class="remember">
-            <input type="checkbox"> Remember Me
+        <div class="button-group">
+
+            <a href="login.php" class="btn" role="button">Login</a>
+
+            <a href="register.php" class="btn" role="button">Create Account</a>
+
+
         </div>
-
-        <button type="submit">Login</button>
-    </form>
-
-    <div class="register-link">
-        Don't have an account?
-        <a href="register.php">Register here</a>
     </div>
-</div>
-
-<script>
-    function validateForm() {
-        let email = document.getElementById("email").value;
-        let password = document.getElementById("password").value;
-
-        let emailError = document.getElementById("emailError");
-        let passwordError = document.getElementById("passwordError");
-
-        emailError.innerHTML = "";
-        passwordError.innerHTML = "";
-
-        let isValid = true;
-
-        // Email validation
-        if (email === "") {
-            emailError.innerHTML = "Email is required";
-            isValid = false;
-        } 
-        else if (!email.includes("@")) {
-            emailError.innerHTML = "Enter a valid email";
-            isValid = false;
-        }
-
-        // Password validation
-        if (password === "") {
-            passwordError.innerHTML = "Password is required";
-            isValid = false;
-        } 
-        else if (password.length < 6) {
-            passwordError.innerHTML = "Password must be at least 6 characters";
-            isValid = false;
-        }
-
-        return isValid; // true = submit, false = stop
-    }
-</script>
-
 </body>
 </html>
