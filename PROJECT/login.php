@@ -31,6 +31,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             $user = mysqli_fetch_assoc($result);
             if (password_verify($password, $user['password']))
 
+                 {
+                
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['role'] = $user['role'];
+
+               
+                if ($rememberMe) 
+                
+                {
+                    setcookie("remembered_email", $email, time() + (86400 * 30), "/");
+                    setcookie("remembered_password", $password, time() + (86400 * 30), "/");
+                } else 
+                
+                {
+                    setcookie("remembered_email", "", time() - 3600, "/");
+                    setcookie("remembered_password", "", time() - 3600, "/");
+                }
+
+                header("Location: dashboard.php");
+                exit();
+            } 
 
 
 
