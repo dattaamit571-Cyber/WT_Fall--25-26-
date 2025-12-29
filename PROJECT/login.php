@@ -11,6 +11,77 @@ $conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
     die("Connection failed: " . mysqli_connect_error());
 }
 
+ $loginError = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+
+{
+    $email = mysqli_real_escape_string($conn, $_POST['loginEmail'] ?? '');
+    $password = $_POST['loginPassword'] ?? '';
+    $rememberMe = isset($_POST['remember_me']);
+
+    if ($email && $password)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
