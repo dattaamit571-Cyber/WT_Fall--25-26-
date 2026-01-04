@@ -3,7 +3,7 @@ session_start();
  $servername = "localhost";
  $db_username = "root";
 $db_password = "";
-$dbname = "Amit_DB";
+$dbname = "quiz_app";
 $conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
 
    if (!$conn)
@@ -48,69 +48,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     setcookie("remembered_email", "", time() - 3600, "/");
                     setcookie("remembered_password", "", time() - 3600, "/");
                 }
-
-                header("Location: dashboard.php");
+                  header("Location: dashboard.php");
                 exit();
             } 
 
+   else
+            
+            {
+                $loginError = "Invalid password.";
+            }
+        } 
+        else 
+        {
+            $loginError = "User not found.";
+        }
+    } 
+    else 
+    {
+        $loginError = "Please fill in all fields.";
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+mysqli_close($conn);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

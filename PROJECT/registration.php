@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -73,7 +72,7 @@ mysqli_close($conn);
     <title>Register - QuizMaster</title>
 
     
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
 
         /* Styles */
