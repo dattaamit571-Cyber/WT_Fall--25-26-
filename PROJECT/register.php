@@ -129,7 +129,7 @@ mysqli_close($conn);
 
     <?php if (!empty($error)): ?>
        
-        <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
+    <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
     <?php endif; ?>
 
     <div class="error-box" id="errorBox"></div>
@@ -140,10 +140,11 @@ mysqli_close($conn);
             <label for="username">Full Name</label>
             <input type="text" id="username" name="username" placeholder="Enter your full name">
         </div>
+
    <div class="form-group">
             <label for="email">Email Address</label>
             <input type="text" id="email" name="email" placeholder="example@email.com">
-        </div>
+    </div>
 
         
         <div class="form-group">
@@ -152,13 +153,13 @@ mysqli_close($conn);
         </div>
 
         <div class="form-group">
-            
+
         <label for="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password">
         </div>
 
         <div class="form-group">
-             <label for="role">Account Type</label>
+            <label for="role">Account Type</label>
             <select id="role" name="role">
                 <option value="">-- Select Role --</option>
                 <option value="student">Student</option>
@@ -175,8 +176,6 @@ mysqli_close($conn);
     </div>
 
 </div>
-
-
 <script src="js/validation.js"></script>
 </body>
 </html>
