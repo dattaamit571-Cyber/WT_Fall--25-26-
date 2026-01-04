@@ -24,12 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $password = $_POST['password'] ?? '';
     $confirmPassword = $_POST['confirmPassword'] ?? '';
     $role = mysqli_real_escape_string($conn, $_POST['role'] ?? '');
-
    
     if ($name && $email && $password && $confirmPassword && $role && $password === $confirmPassword) 
          
     {
-        
         $checkQuery = "SELECT * FROM users WHERE email = '$email'";
         $checkResult = mysqli_query($conn, $checkQuery);
 
@@ -54,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         }
     } 
     else 
-            {
+    {
         $error = "Please fill  all fields correctly.";
     }
 }
@@ -71,8 +69,8 @@ mysqli_close($conn);
 
     
     <link rel="stylesheet" href="style.css">
+
     <style>
-          /* Styles */
 
         .popup-success
         
@@ -88,8 +86,10 @@ mysqli_close($conn);
             background-color: rgba(0, 0, 0, 0.6);
             z-index: 999;
         }
-             .popup-box
-         {
+
+        .popup-box
+
+        {
             background-color: #fff;
             padding: 30px 50px;
             border-radius: 10px;
@@ -98,12 +98,14 @@ mysqli_close($conn);
         }
 
         .popup-box h2 
+
         {
             color: green;
         }
 
         .error-message
-         {
+
+        {
             color: red;
             text-align: center;
             margin-bottom: 10px;
