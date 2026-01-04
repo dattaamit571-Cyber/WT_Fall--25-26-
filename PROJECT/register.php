@@ -110,3 +110,15 @@ mysqli_close($conn);
         }
     </style>
 </head>
+
+<body>
+<?php if (!empty($successMessage)): ?>
+    
+    <div class="popup-success">
+        <div class="popup-box">
+            <h2><?php echo $successMessage; ?></h2>
+            <p><a href="login.php">Click here to login</a></p>
+        </div>
+    </div>
+
+<?php endif; ?>
