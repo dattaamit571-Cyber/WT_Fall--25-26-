@@ -14,7 +14,6 @@ if (isset($_SESSION['user_id'])) {
     <title>Online Quiz Platform</title>
   <style>
   
-
    * {
          box-sizing: border-box;
             margin: 0;
@@ -80,9 +79,7 @@ if (isset($_SESSION['user_id'])) {
             background: #2575fc;
             color: #fff;
             box-shadow: 0 6px 25px rgba(37,117,252,0.7);
-        } 
-        
-        
+        }  
     </style>
 </head>
 <body>

@@ -8,7 +8,6 @@ $dbname = "quiz_app";
 
 $conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
 
-
 if (!$conn) 
 {
     die("Connection failed: " . mysqli_connect_error());
@@ -68,7 +67,8 @@ mysqli_close($conn);
     <title>Register - QuizMaster</title>
 
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Css/register.css">
+
 
     <style>
 
