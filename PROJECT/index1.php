@@ -14,7 +14,6 @@ if (isset($_SESSION['user_id'])) {
     <title>Online Quiz Platform</title>
     <link rel="stylesheet" href="Css/index1.css">
   
-   
 </head>
 <body>
   <div class="container" role="main" aria-label="Welcome container">
