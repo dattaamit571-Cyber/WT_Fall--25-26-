@@ -88,3 +88,25 @@ mysqli_close($conn);
             background-color: rgba(0, 0, 0, 0.6);
             z-index: 999;
         }
+             .popup-box
+         {
+            background-color: #fff;
+            padding: 30px 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #333;
+            text-align: center;
+        }
+
+        .popup-box h2 
+        {
+            color: green;
+        }
+
+        .error-message
+         {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
