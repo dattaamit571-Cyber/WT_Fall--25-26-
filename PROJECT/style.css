@@ -1,5 +1,5 @@
 /* Styles for register.php  */
-.registration-container
+.register-container
  {
     max-width: 500px;
     margin: 80px auto;
@@ -9,7 +9,7 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.registration-container h1 
+.register-container h1 
 {
     font-size: 2rem;
     margin-bottom: 15px;
@@ -61,7 +61,7 @@
     transition: background-color 0.3s ease;
 }
 
-.registration-btn:hover 
+.register-btn:hover 
 {
     background-color: #2980b9;
 }
