@@ -4,7 +4,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
     header("Location: login.php");
     exit();
 }
-// getting values using session variables
+
  $role = $_SESSION['role'];
  $userId = $_SESSION['user_id'];
  $username = $_SESSION['username'] ?? 'User';
@@ -18,18 +18,21 @@ if ($username === 'User')
          mysqli_stmt_bind_param($stmt, "i", $userId);
          mysqli_stmt_execute($stmt);
          mysqli_stmt_bind_result($stmt, $fetchedUsername);
-          if (mysqli_stmt_fetch($stmt)) 
+
+        if (mysqli_stmt_fetch($stmt)) 
+
           {
             $username = $fetchedUsername;
             $_SESSION['username'] = $username; 
           }
-
 
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,28 +45,27 @@ if ($username === 'User')
 <body>
 
 <div class="dashboard-layout">
-
   
 <aside class="sidebar">
 
   <h2>Menu</h2>
         <ul>
-             <?php if ($role === 'student'): ?> 
+            <?php if ($role === 'student'): ?> 
 
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="student/view_quiz.php"> Available Quizzes</a></li>
-                <li><a href="student/view_my_results.php"> My Results</a></li>
+          <li><a href="dashboard.php">Dashboard</a></li>
+          <li><a href="student/view_quiz.php"> Available Quizzes</a></li>
+          <li><a href="student/view_my_results.php"> My Results</a></li>
 
-             <?php elseif ($role === 'teacher'): ?>
+          <?php elseif ($role === 'teacher'): ?>
 
-                <li><a href="dashboard.php"> Dashboard</a></li>
-                <li><a href="teacher/create_quiz.php"> Create Quiz</a></li>
+          <li><a href="dashboard.php"> Dashboard</a></li>
+          <li><a href="teacher/create_quiz.php"> Create Quiz</a></li>
     <li><a href="teacher/add_question.php"> Add Questions</a></li>
     <li><a href="teacher/edit_question.php"> Edit Questions</a></li>
     <li><a href="teacher/delete_question.php"> Delete Questions</a></li>
     <li><a href="teacher/teacher_results.php"> View Results</a></li>
 
-             <?php elseif ($role === 'admin'): ?>
+    <?php elseif ($role === 'admin'): ?>
 
                 <li><a href="dashboard.php"> Dashboard</a></li>
                 <li><a href="admin/admin_manage_users.php"> Manage Users</a></li>
