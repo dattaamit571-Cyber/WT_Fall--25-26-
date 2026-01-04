@@ -1,193 +1,134 @@
-
 <?php
 session_start();
 
-$servername = "localhost";
-$db_username = "root";
-$db_password = "";
-$dbname = "quiz_app"; 
 
-$conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
-
-
-if (!$conn) 
-{
-    die("Connection failed: " . mysqli_connect_error());
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
+    header("Location: login.php");
+    exit();
 }
 
-$successMessage = "";
+// getting values using session variables
+ $role = $_SESSION['role'];
+ $userId = $_SESSION['user_id'];
+ $username = $_SESSION['username'] ?? 'User';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST')
- {
-   
-    $name = mysqli_real_escape_string($conn, $_POST['username'] ?? '');
-    $email = mysqli_real_escape_string($conn, $_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-    $confirmPassword = $_POST['confirmPassword'] ?? '';
-    $role = mysqli_real_escape_string($conn, $_POST['role'] ?? '');
 
-   
-    if ($name && $email && $password && $confirmPassword && $role && $password === $confirmPassword) 
-    
+if ($username === 'User') 
+{
+ $conn = mysqli_connect("localhost", "root", "", "quiz_app"); 
+    if ($conn) 
     {
-        
-        $checkQuery = "SELECT * FROM users WHERE email = '$email'";
-        $checkResult = mysqli_query($conn, $checkQuery);
+         $stmt = mysqli_prepare($conn, "SELECT username FROM users WHERE id = ?");
+         mysqli_stmt_bind_param($stmt, "i", $userId);
+         mysqli_stmt_execute($stmt);
+         mysqli_stmt_bind_result($stmt, $fetchedUsername);
+          if (mysqli_stmt_fetch($stmt)) 
+          {
+            $username = $fetchedUsername;
+            $_SESSION['username'] = $username; 
+          }
 
-        if (mysqli_num_rows($checkResult) > 0) 
-        
-        {
-            $error = "Email already exists!";
-        } 
-        else 
-        {
-          
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-           
-            $sql = "INSERT INTO users (username, email, password, role) VALUES ('$name', '$email', '$hashedPassword', '$role')";
-            if (mysqli_query($conn, $sql)) 
-            {
-                $successMessage = "Registration Successful";
-            } else 
-            {
-                $error = "Registration failed.  try again.";
-            }
-        }
-    } 
-    else 
-    
-    {
-        $error = "Please fill  all fields correctly.";
+
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
     }
 }
-
-mysqli_close($conn);
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - QuizMaster</title>
+    <meta charset="UTF-8" />
+    <title>Dashboard - QuizMaster</title>
+    <link rel="stylesheet" href="css/style.css" />
 
-    
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-
-        /* Styles */
-
-        .popup-success
-        
-        {
-        display: <?php echo $successMessage ? 'flex' : 'none'; ?>;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 999;
-        }
-
-        .popup-box
-         {
-            background-color: #fff;
-            padding: 30px 50px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #333;
-            text-align: center;
-        }
-
-        .popup-box h2 
-        {
-            color: green;
-        }
-
-        .error-message
-         {
-            color: red;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-
-    </style>
 </head>
 <body>
 
+<div class="dashboard-layout">
 
+  
+<aside class="sidebar">
 
-<?php if (!empty($successMessage)): ?>
-    
-    <div class="popup-success">
-        <div class="popup-box">
-            <h2><?php echo $successMessage; ?></h2>
-            <p><a href="login.php">Click here to login</a></p>
-        </div>
-    </div>
+  <h2>Menu</h2>
+        <ul>
+             <?php if ($role === 'student'): ?> 
 
-<?php endif; ?>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="student/view_quiz.php"> Available Quizzes</a></li>
+                <li><a href="student/view_my_results.php"> My Results</a></li>
 
-<div class="register-container">
-    <h1>Create Your Account</h1>
+             <?php elseif ($role === 'teacher'): ?>
 
-    <?php if (!empty($error)): ?>
-       
-        <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
-    <?php endif; ?>
+                <li><a href="dashboard.php"> Dashboard</a></li>
+                <li><a href="teacher/create_quiz.php"> Create Quiz</a></li>
+    <li><a href="teacher/add_question.php"> Add Questions</a></li>
+    <li><a href="teacher/edit_question.php"> Edit Questions</a></li>
+    <li><a href="teacher/delete_question.php"> Delete Questions</a></li>
+   <li><a href="teacher/teacher_results.php"> View Results</a></li>
 
-    <div class="error-box" id="errorBox"></div>
+             <?php elseif ($role === 'admin'): ?>
 
-    <form id="registerForm" action="" method="POST" onsubmit="return validateForm();">
-        
-    <div class="form-group">
-            <label for="username">Full Name</label>
-            <input type="text" id="username" name="username" placeholder="Enter your full name">
-        </div>
+                <li><a href="dashboard.php"> Dashboard</a></li>
+                <li><a href="admin/admin_manage_users.php"> Manage Users</a></li>
+                <li><a href="admin/admin_manage_quizzes.php"> Manage Quizzes</a></li>
+             <?php endif; ?>
 
-        
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="text" id="email" name="email" placeholder="example@email.com">
-        </div>
+            <li><a href="logout.php"> Logout</a></li>
+        </ul>
 
-        
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Create a strong password">
-        </div>
-
-        <div class="form-group">
-            
-        <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password">
-        </div>
-
-        <div class="form-group">
-            
-        <label for="role">Account Type</label>
-            <select id="role" name="role">
-                <option value="">-- Select Role --</option>
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-            </select>
-        </div>
-
-        <button type="submit" class="register-btn">Register</button>
+        <form action="logout.php" method="POST" style="margin-top: 20px;">
+        <button type="submit" class="btn logout-btn">Logout</button>
     </form>
+    </aside>
 
-    
-    <div class="form-footer">
-        Already registered? <a href="login.php">Login from  here</a>
-    </div>
+   
+    <main class="content-area">
+        <div class="breadcrumbs">Dashboard</div>
 
+       
+
+
+
+          <?php if ($role === 'student'): ?>
+
+            <h1>Welcome, <?= htmlspecialchars($username) ?> (Student)</h1>
+            <p>Here are the quizzes available to you:</p>
+            <a href="student/view_quiz.php" class="quick-btn">Take a Quiz</a>
+            <a href="student/view_my_results.php" class="quick-btn">View My Results</a>
+
+          <?php elseif ($role === 'teacher'): ?>
+
+            <h1>Welcome, <?= htmlspecialchars($username) ?> (Teacher)</h1>
+            <p>Manage your quizzes and questions from here.</p>
+
+            <div class="quick-actions">
+                <a href="teacher/create_quiz.php" class="quick-btn"> New Quiz</a>
+                <a href="teacher/teacher_results.php" class="quick-btn">View Results</a>
+            </div>
+
+          <?php elseif ($role === 'admin'): ?>
+
+            <h1>Welcome, <?= htmlspecialchars($username) ?> (Admin)</h1>
+            <p>Manage users and quizzes system-wide.</p>
+
+             <div class="quick-actions">
+                <a href="admin/admin_manage_users.php" class="quick-btn"> Manage Users</a>
+                <a href="admin/admin_manage_quizzes.php" class="quick-btn"> Manage Quizzes</a>
+            </div>
+
+        <?php else: ?>
+
+            <h1>Unknown Role</h1>
+            <p>Your role is not recognized.</p>
+
+        <?php endif; ?>
+
+    </main>
 </div>
 
-
-<script src="js/validation.js"></script>
 </body>
 </html>
