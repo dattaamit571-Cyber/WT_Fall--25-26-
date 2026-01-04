@@ -27,3 +27,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
    
     if ($name && $email && $password && $confirmPassword && $role && $password === $confirmPassword) 
+         
+    {
+        
+        $checkQuery = "SELECT * FROM users WHERE email = '$email'";
+        $checkResult = mysqli_query($conn, $checkQuery);
+
+        if (mysqli_num_rows($checkResult) > 0) 
+        
+        {
+            $error = "Email already exists!";
+        } 
+        else 
+        {
+          
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+           
+            $sql = "INSERT INTO users (username, email, password, role) VALUES ('$name', '$email', '$hashedPassword', '$role')";
+            if (mysqli_query($conn, $sql)) 
+            {
+                $successMessage = "Registration Successful";
+            } else 
+            {
+                $error = "Registration failed.  try again.";
+            }
+        }
+    } 
+    else 
