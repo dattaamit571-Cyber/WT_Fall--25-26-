@@ -54,3 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         }
     } 
     else 
+            {
+        $error = "Please fill  all fields correctly.";
+    }
+}
+
+mysqli_close($conn);
+?>
