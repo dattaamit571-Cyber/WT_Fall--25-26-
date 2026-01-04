@@ -156,3 +156,25 @@ mysqli_close($conn);
         </div>
 
         <div class="form-group">
+             <label for="role">Account Type</label>
+            <select id="role" name="role">
+                <option value="">-- Select Role --</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+        </div>
+
+        <button type="submit" class="register-btn">Register</button>
+    </form>
+
+    
+    <div class="form-footer">
+        Already registered? <a href="login.php">Login from  here</a>
+    </div>
+
+</div>
+
+
+<script src="js/validation.js"></script>
+</body>
+</html>
