@@ -122,3 +122,19 @@ mysqli_close($conn);
     </div>
 
 <?php endif; ?>
+<div class="register-container">
+    <h1>Create Your Account</h1>
+
+    <?php if (!empty($error)): ?>
+       
+        <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
+
+    <div class="error-box" id="errorBox"></div>
+
+    <form id="registerForm" action="" method="POST" onsubmit="return validateForm();">
+        
+    <div class="form-group">
+            <label for="username">Full Name</label>
+            <input type="text" id="username" name="username" placeholder="Enter your full name">
+        </div>
