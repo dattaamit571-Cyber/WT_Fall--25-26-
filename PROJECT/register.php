@@ -138,3 +138,21 @@ mysqli_close($conn);
             <label for="username">Full Name</label>
             <input type="text" id="username" name="username" placeholder="Enter your full name">
         </div>
+   <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="text" id="email" name="email" placeholder="example@email.com">
+        </div>
+
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a strong password">
+        </div>
+
+        <div class="form-group">
+            
+        <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password">
+        </div>
+
+        <div class="form-group">
