@@ -36,30 +36,25 @@ if ($username === 'User')
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8" />
     <title>Dashboard - QuizMaster</title>
     <link rel="stylesheet" href="Css/dashboard.css" />
-
 </head>
-<body>
 
+
+<body>
 <div class="dashboard-layout">
   
 <aside class="sidebar">
 
   <h2>Menu</h2>
-        <ul>
-            <?php if ($role === 'student'): ?> 
 
-          <li><a href="dashboard.php">Dashboard</a></li>
-          <li><a href="student/view_quiz.php"> Available Quizzes</a></li>
-          <li><a href="student/view_my_results.php"> My Results</a></li>
+        <ul>
 
           <?php elseif ($role === 'teacher'): ?>
 
-          <li><a href="dashboard.php"> Dashboard</a></li>
-          <li><a href="teacher/create_quiz.php"> Create Quiz</a></li>
+    <li><a href="dashboard.php"> Dashboard</a></li>
+    <li><a href="teacher/create_quiz.php"> Create Quiz</a></li>
     <li><a href="teacher/add_question.php"> Add Questions</a></li>
     <li><a href="teacher/edit_question.php"> Edit Questions</a></li>
     <li><a href="teacher/delete_question.php"> Delete Questions</a></li>
@@ -67,10 +62,9 @@ if ($username === 'User')
 
     <?php elseif ($role === 'admin'): ?>
 
-                <li><a href="dashboard.php"> Dashboard</a></li>
-                <li><a href="admin/admin_manage_users.php"> Manage Users</a></li>
-                <li><a href="admin/admin_manage_quizzes.php"> Manage Quizzes</a></li>
-             <?php endif; ?>
+            <li><a href="dashboard.php"> Dashboard</a></li>
+
+            <?php endif; ?>
 
             <li><a href="logout.php"> Logout</a></li>
         </ul>
@@ -82,18 +76,7 @@ if ($username === 'User')
 
    
     <main class="content-area">
-        <div class="breadcrumbs">Dashboard</div>
-
-       
-
-
-
-          <?php if ($role === 'student'): ?>
-
-            <h1>Welcome, <?= htmlspecialchars($username) ?> (Student)</h1>
-            <p>Here are the quizzes available to you:</p>
-            <a href="student/view_quiz.php" class="quick-btn">Take a Quiz</a>
-            <a href="student/view_my_results.php" class="quick-btn">View My Results</a>
+      <div class="breadcrumbs">Dashboard</div>
 
           <?php elseif ($role === 'teacher'): ?>
 
@@ -111,8 +94,7 @@ if ($username === 'User')
             <p>Manage users and quizzes system-wide.</p>
 
              <div class="quick-actions">
-                <a href="admin/admin_manage_users.php" class="quick-btn"> Manage Users</a>
-                <a href="admin/admin_manage_quizzes.php" class="quick-btn"> Manage Quizzes</a>
+
             </div>
 
         <?php else: ?>
@@ -121,7 +103,6 @@ if ($username === 'User')
             <p>Your role is not recognized.</p>
 
         <?php endif; ?>
-
     </main>
 </div>
 </body>
