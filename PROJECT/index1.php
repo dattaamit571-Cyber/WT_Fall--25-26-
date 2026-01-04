@@ -16,18 +16,15 @@ if (isset($_SESSION['user_id'])) {
   
 </head>
 <body>
+    
   <div class="container" role="main" aria-label="Welcome container">
   <h1>Welcome to QuizMaster</h1>
   
   <p>Start creating quizzes, take tests, and track your performance!</p>
 
-   <div class="button-group">
-
+  <div class="button-group">
             <a href="login.php" class="btn" role="button">Login</a>
-
             <a href="register.php" class="btn" role="button">Create Account</a>
-
-
         </div>
     </div>
 </body>
