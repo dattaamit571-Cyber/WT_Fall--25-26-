@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
            
             $sql = "INSERT INTO users (username, email, password, role) VALUES ('$name', '$email', '$hashedPassword', '$role')";
             if (mysqli_query($conn, $sql)) 
+
             {
                 $successMessage = "Registration Successful";
             } else 
@@ -49,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 $error = "Registration failed.  try again.";
             }
         }
-    } 
+    }
     else 
     {
         $error = "Please fill  all fields correctly.";
