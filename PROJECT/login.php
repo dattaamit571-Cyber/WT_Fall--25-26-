@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             $user = mysqli_fetch_assoc($result);
             if (password_verify($password, $user['password']))
 
-                 {
+            {
                 
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['role'] = $user['role'];
@@ -48,7 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     setcookie("remembered_email", "", time() - 3600, "/");
                     setcookie("remembered_password", "", time() - 3600, "/");
                 }
-                  header("Location: dashboard.php");
+
+                header("Location: dashboard.php");
                 exit();
             } 
 
@@ -75,7 +76,6 @@ mysqli_close($conn);
 <html lang="en">
 <head>
 
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login - Quiz Platform</title>
@@ -85,15 +85,16 @@ mysqli_close($conn);
 </head>
 <body>
 
-  <div class="login-container">
+    <div class="login-container">
+
     <h1>Login to Your Account</h1>
 
     <?php if (!empty($loginError)): ?>
     <div class="error-message"><?= htmlspecialchars($loginError) ?></div>
     <?php endif; ?>
 
-    <form id="loginForm" action="" method="POST" onsubmit="return validateLogin();">
-       
+    <form id="loginForm" action="" method="POST" onsubmit="return validateLogin();">  
+
     <div class="form-group">
             <label for="loginEmail">Email Address</label>
             <input type="text" id="loginEmail" name="loginEmail" placeholder="example@email.com"
@@ -101,7 +102,7 @@ mysqli_close($conn);
         
     </div>
 
-<div class="form-group">
+   <div class="form-group">
             <label for="loginPassword">Password</label>
             <input type="password" id="loginPassword" name="loginPassword" placeholder="Your password"
              value="<?= isset($_COOKIE['remembered_password']) ? htmlspecialchars($_COOKIE['remembered_password']) : '' ?>" required>
@@ -119,8 +120,6 @@ mysqli_close($conn);
     </div>
 </div>
 
-
-
 <script src="js/validation.js"></script>
 <script>
 
@@ -135,7 +134,6 @@ function validateLogin()
         alert("Please fill  all fields.");
         return false;
     }
-   
     return true;
 }
 </script>
