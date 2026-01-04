@@ -15,3 +15,15 @@ if (!$conn)
 }
 
 $successMessage = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
+ {
+   
+    $name = mysqli_real_escape_string($conn, $_POST['username'] ?? '');
+    $email = mysqli_real_escape_string($conn, $_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $confirmPassword = $_POST['confirmPassword'] ?? '';
+    $role = mysqli_real_escape_string($conn, $_POST['role'] ?? '');
+
+   
+    if ($name && $email && $password && $confirmPassword && $role && $password === $confirmPassword) 
