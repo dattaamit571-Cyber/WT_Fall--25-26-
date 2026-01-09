@@ -1,134 +1,141 @@
 <?php
 session_start();
 
-
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
-    header("Location: login.php");
+/* ---------- LOGOUT ---------- */
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+    session_unset();
+    session_destroy();
+    setcookie("user_email", "", time() - 3600);
+    header("Location: index.php");
     exit();
 }
 
-// getting values using session variables
- $role = $_SESSION['role'];
- $userId = $_SESSION['user_id'];
- $username = $_SESSION['username'] ?? 'User';
+/* ---------- REGISTRATION ---------- */
+$regError = "";
+if (isset($_POST['register'])) {
 
+    $name  = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $pass  = $_POST['password'];
+    $cpass = $_POST['confirm_password'];
 
-if ($username === 'User') 
-{
- $conn = mysqli_connect("localhost", "root", "", "quiz_app"); 
-    if ($conn) 
-    {
-         $stmt = mysqli_prepare($conn, "SELECT username FROM users WHERE id = ?");
-         mysqli_stmt_bind_param($stmt, "i", $userId);
-         mysqli_stmt_execute($stmt);
-         mysqli_stmt_bind_result($stmt, $fetchedUsername);
-          if (mysqli_stmt_fetch($stmt)) 
-          {
-            $username = $fetchedUsername;
-            $_SESSION['username'] = $username; 
-          }
-
-
-        mysqli_stmt_close($stmt);
-        mysqli_close($conn);
+    if ($name == "" || $email == "" || $pass == "" || $cpass == "") {
+        $regError = "All fields are required";
+    } elseif ($pass != $cpass) {
+        $regError = "Password does not match";
+    } else {
+        // Save data in session (beginner method)
+        $_SESSION['reg_name']  = $name;
+        $_SESSION['reg_email'] = $email;
+        $_SESSION['reg_pass']  = $pass;
+        $_SESSION['step'] = "login";
     }
 }
+
+/* ---------- LOGIN ---------- */
+$loginError = "";
+if (isset($_POST['login'])) {
+
+    $email = $_POST['email'];
+    $pass  = $_POST['password'];
+
+    if (
+        $email == ($_SESSION['reg_email'] ?? "") &&
+        $pass  == ($_SESSION['reg_pass'] ?? "")
+    ) {
+        $_SESSION['username'] = $_SESSION['reg_name'];
+        $_SESSION['login_time'] = date("h:i:s A");
+
+        // COOKIE
+        setcookie("user_email", $email, time() + 3600);
+
+        $_SESSION['step'] = "dashboard";
+    } else {
+        $loginError = "Invalid email or password";
+    }
+}
+
+/* ---------- PAGE CONTROL ---------- */
+$page = $_SESSION['step'] ?? "register";
 ?>
 
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-    <meta charset="UTF-8" />
-    <title>Dashboard - QuizMaster</title>
-    <link rel="stylesheet" href="css/style.css" />
-
+    <title>PHP Login System</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            width: 320px;
+            margin: auto;
+            padding: 20px;
+            margin-top: 60px;
+            border-radius: 6px;
+        }
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            background: #2575fc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="dashboard-layout">
-
-  
-<aside class="sidebar">
-
-  <h2>Menu</h2>
-        <ul>
-             <?php if ($role === 'student'): ?> 
-
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="student/view_quiz.php"> Available Quizzes</a></li>
-                <li><a href="student/view_my_results.php"> My Results</a></li>
-
-             <?php elseif ($role === 'teacher'): ?>
-
-                <li><a href="dashboard.php"> Dashboard</a></li>
-                <li><a href="teacher/create_quiz.php"> Create Quiz</a></li>
-    <li><a href="teacher/add_question.php"> Add Questions</a></li>
-    <li><a href="teacher/edit_question.php"> Edit Questions</a></li>
-    <li><a href="teacher/delete_question.php"> Delete Questions</a></li>
-   <li><a href="teacher/teacher_results.php"> View Results</a></li>
-
-             <?php elseif ($role === 'admin'): ?>
-
-                <li><a href="dashboard.php"> Dashboard</a></li>
-                <li><a href="admin/admin_manage_users.php"> Manage Users</a></li>
-                <li><a href="admin/admin_manage_quizzes.php"> Manage Quizzes</a></li>
-             <?php endif; ?>
-
-            <li><a href="logout.php"> Logout</a></li>
-        </ul>
-
-        <form action="logout.php" method="POST" style="margin-top: 20px;">
-        <button type="submit" class="btn logout-btn">Logout</button>
+<!-- ---------- REGISTRATION PAGE ---------- -->
+<?php if ($page == "register") { ?>
+<div class="box">
+    <h2>Register</h2>
+    <form method="post">
+        <input type="text" name="name" placeholder="Name"><br>
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="password" name="confirm_password" placeholder="Confirm Password"><br><br>
+        <button name="register">Register</button>
     </form>
-    </aside>
-
-   
-    <main class="content-area">
-        <div class="breadcrumbs">Dashboard</div>
-
-       
-
-
-
-          <?php if ($role === 'student'): ?>
-
-            <h1>Welcome, <?= htmlspecialchars($username) ?> (Student)</h1>
-            <p>Here are the quizzes available to you:</p>
-            <a href="student/view_quiz.php" class="quick-btn">Take a Quiz</a>
-            <a href="student/view_my_results.php" class="quick-btn">View My Results</a>
-
-          <?php elseif ($role === 'teacher'): ?>
-
-            <h1>Welcome, <?= htmlspecialchars($username) ?> (Teacher)</h1>
-            <p>Manage your quizzes and questions from here.</p>
-
-            <div class="quick-actions">
-                <a href="teacher/create_quiz.php" class="quick-btn"> New Quiz</a>
-                <a href="teacher/teacher_results.php" class="quick-btn">View Results</a>
-            </div>
-
-          <?php elseif ($role === 'admin'): ?>
-
-            <h1>Welcome, <?= htmlspecialchars($username) ?> (Admin)</h1>
-            <p>Manage users and quizzes system-wide.</p>
-
-             <div class="quick-actions">
-                <a href="admin/admin_manage_users.php" class="quick-btn"> Manage Users</a>
-                <a href="admin/admin_manage_quizzes.php" class="quick-btn"> Manage Quizzes</a>
-            </div>
-
-        <?php else: ?>
-
-            <h1>Unknown Role</h1>
-            <p>Your role is not recognized.</p>
-
-        <?php endif; ?>
-
-    </main>
+    <p class="error"><?php echo $regError; ?></p>
 </div>
+<?php } ?>
+
+<!-- ---------- LOGIN PAGE ---------- -->
+<?php if ($page == "login") { ?>
+<div class="box">
+    <h2>Login</h2>
+    <form method="post">
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Password"><br><br>
+        <button name="login">Login</button>
+    </form>
+    <p class="error"><?php echo $loginError; ?></p>
+</div>
+<?php } ?>
+
+<!-- ---------- DASHBOARD ---------- -->
+<?php if ($page == "dashboard" && isset($_SESSION['username'])) { ?>
+<div class="box">
+    <h2>Welcome, <?php echo $_SESSION['username']; ?></h2>
+    <p>Login Time: <?php echo $_SESSION['login_time']; ?></p>
+    <p>Email from Cookie:
+        <?php echo $_COOKIE['user_email'] ?? "No cookie"; ?>
+    </p>
+    <a href="?action=logout">Logout</a>
+</div>
+<?php } ?>
 
 </body>
 </html>

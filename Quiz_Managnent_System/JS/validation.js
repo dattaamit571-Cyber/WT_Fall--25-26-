@@ -59,7 +59,6 @@ function validateForm() {
     return regex.test(email);
 }
 
-// LOGIN FORM VALIDATION
 
 function validateLogin() {
     const email = document.getElementById('loginEmail').value.trim();
