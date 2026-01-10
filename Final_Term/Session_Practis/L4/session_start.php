@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    $_SESSION['username'] = "Nafis"; // sample name (you can change)
+    $_SESSION['username'] = "AMIT DATTA DIP"; // sample name (you can change)
 }
 
 if (!isset($_SESSION['visits'])) {
