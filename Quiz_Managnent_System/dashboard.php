@@ -54,8 +54,16 @@ if ($username === 'Teacher')
             <li><a href="teacher/delete_question.php">Delete Questions</a></li>
             <li><a href="teacher/teacher_results.php">View Results</a></li>
         </ul>
-        
+
         <form action="logout.php" method="POST" style="margin-top:20px;">
         <button type="submit" class="btn logout-btn">Logout</button>
         </form>
     </aside>
+
+    <main class="content-area">
+
+        <div class="breadcrumbs">Teacher Dashboard</div>
+        <h1>Welcome, <?php echo htmlspecialchars($username); ?>!</h1>
+        <p>Manage your quizzes, questions, and student results.</p>
+
+        
