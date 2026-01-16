@@ -45,7 +45,7 @@ if ($username === 'Teacher')
 
     <aside class="sidebar">
         <h2>Teacher Menu</h2>
-        
+
         <ul>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="teacher/create_quiz.php">Create Quiz</a></li>
@@ -54,3 +54,8 @@ if ($username === 'Teacher')
             <li><a href="teacher/delete_question.php">Delete Questions</a></li>
             <li><a href="teacher/teacher_results.php">View Results</a></li>
         </ul>
+        
+        <form action="logout.php" method="POST" style="margin-top:20px;">
+        <button type="submit" class="btn logout-btn">Logout</button>
+        </form>
+    </aside>
