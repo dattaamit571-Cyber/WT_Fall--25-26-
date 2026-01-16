@@ -10,7 +10,7 @@ $userId = $_SESSION['user_id'];
 $username = $_SESSION['username'] ?? 'Teacher';
 
 if ($username === 'Teacher') 
-    {
+{
     $conn = mysqli_connect("localhost", "root", "", "quiz_app");
     if ($conn)
     {
@@ -58,7 +58,7 @@ if ($username === 'Teacher')
         <form action="logout.php" method="POST" style="margin-top:20px;">
         <button type="submit" class="btn logout-btn">Logout</button>
         </form>
-        
+
     </aside>
 
     <main class="content-area">
