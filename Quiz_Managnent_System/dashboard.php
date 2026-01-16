@@ -31,3 +31,17 @@ if ($username === 'Teacher')
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Dashboard - QuizMaster</title>
+    <link rel="stylesheet" href="Css/dashboard.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+        <h2>Teacher Menu</h2>
