@@ -58,6 +58,7 @@ if ($username === 'Teacher')
         <form action="logout.php" method="POST" style="margin-top:20px;">
         <button type="submit" class="btn logout-btn">Logout</button>
         </form>
+        
     </aside>
 
     <main class="content-area">
@@ -66,4 +67,13 @@ if ($username === 'Teacher')
         <h1>Welcome, <?php echo htmlspecialchars($username); ?>!</h1>
         <p>Manage your quizzes, questions, and student results.</p>
 
-        
+        <div class="quick-actions">
+            <a href="teacher/create_quiz.php" class="quick-btn"> New Quiz</a>
+            <a href="teacher/teacher_results.php" class="quick-btn"> View Results</a>
+        </div>
+
+    </main>
+
+</div>
+</body>
+</html>
