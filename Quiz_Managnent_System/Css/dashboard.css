@@ -104,3 +104,26 @@
     transition: background-color 0.3s ease;
     display: inline-block;
 }
+.quick-btn:hover
+{
+    background-color: #1e88e5;
+}
+
+h1
+{
+    margin-bottom: 10px;
+}
+.dashboard-layout 
+{
+    display: flex;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+.sidebar 
+{
+    width: 220px;
+    background-color: #263238;
+    color: #ffffff;
+    padding: 20px;
+}
