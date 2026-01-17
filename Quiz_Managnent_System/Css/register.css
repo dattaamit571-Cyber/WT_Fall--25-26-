@@ -53,3 +53,31 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+.register-btn:hover 
+{
+    background-color: #2980b9;
+}
+.form-footer 
+{
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+.form-footer a 
+{
+    color: #3498db;
+    text-decoration: none;
+}
+.form-footer a:hover 
+{
+    text-decoration: underline;
+}
+.error-box 
+{
+    display: none; 
+    background-color: #ffe0e0;
+    color: #b30000;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    text-align: left;
+}
