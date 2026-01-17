@@ -45,3 +45,11 @@ if ($username === 'Teacher')
     <aside class="sidebar">
         <h2>Teacher Menu</h2>
         
+        <ul>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="teacher/create_quiz.php">Create Quiz</a></li>
+            <li><a href="teacher/add_question.php">Add Questions</a></li>
+            <li><a href="teacher/edit_question.php">Edit Questions</a></li>
+            <li><a href="teacher/delete_question.php">Delete Questions</a></li>
+            <li><a href="teacher/teacher_results.php">View Results</a></li>
+        </ul>
