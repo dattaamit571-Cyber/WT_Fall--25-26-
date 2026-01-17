@@ -62,3 +62,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['publish_quiz']))
     {
         $publishMessage = "Published successfully!";
     } 
+    else 
+    {
+        $error = "Failed to publish the quiz. Please try again.";
+    }
+}
+$question =[];
+if ($quiz_id) 
+{
+    $questionsResult = mysqli_query($conn, "SELECT * FROM questions WHERE quiz_id = $quiz_id");
+    while ($row = mysqli_fetch_assoc($questionsResult)) 
+    {
+        $question[] = $row;
+    }
+}
+mysqli_close($conn);
+?>
