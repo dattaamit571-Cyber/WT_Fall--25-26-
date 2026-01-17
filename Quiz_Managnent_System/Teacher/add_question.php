@@ -163,3 +163,48 @@ mysqli_close($conn);
             <button type="submit" name="submit_question" class="quick-btn">Add Question</button>
             <a href="../dashboard.php" class="quick-btn" style="background:#777; margin-left:10px;">Back to Dashboard</a>
  </form>
+
+ <form method="POST" action="" style="display:inline;">
+
+                <input type="hidden" name="quiz_id" value="<?= $quiz_id ?>">
+                <button type="submit" name="publish_quiz" class="publish-btn">Publish Quiz</button>
+            </form>
+
+         <?php endif; ?>
+
+         <?php if (count($questions) > 0): ?>
+             <h2>Questions Added</h2>
+             <?php foreach ($questions as $q): ?>
+                
+                    <div class="question-block">
+                     <strong><?= htmlspecialchars($q['question_text']) ?></strong><br>
+
+                        1. <?= htmlspecialchars($q['option_1']) ?><br>
+                        2. <?= htmlspecialchars($q['option_2']) ?><br>
+                        3. <?= htmlspecialchars($q['option_3']) ?><br>
+                        4. <?= htmlspecialchars($q['option_4']) ?><br>
+                        <em>Correct Option: <?= $q['correct_option'] ?></em>
+
+                    </div>
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+
+</main>
+</div>
+
+<?php if ($publishMessage): ?>
+
+    <div class="popup-message" id="popup"><?= htmlspecialchars($publishMessage) ?></div>
+
+    <script>
+        document.getElementById('popup').style.display = 'block';
+        setTimeout(() => {
+            document.getElementById('popup').style.display = 'none';
+        }, 3000);
+    </script>
+
+
+<?php endif; ?>
+</body>
+</html>
