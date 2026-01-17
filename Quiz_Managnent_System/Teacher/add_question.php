@@ -47,3 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_question']))
             $error = "Failed to add question. Please try again.";
         }
     } 
+       else 
+    {
+        $error = "Please fill all fields correctly.";
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['publish_quiz'])) 
+{
+
+    $quiz_id = intval($_POST['quiz_id']);
+    $update = mysqli_query($conn, "UPDATE quizzes SET is_published = 1 WHERE id = $quiz_id");
+    if ($update)
+    {
+        $publishMessage = "Published successfully!";
+    } 
