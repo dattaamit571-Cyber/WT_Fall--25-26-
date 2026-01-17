@@ -1,20 +1,25 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'teacher') 
 
 {
     header("Location: ../dashboard.php");
     exit();
 }
+
 $servername = "localhost";
 $db_username = "root";
 $db_password = "";
 $dbname = "quiz_app";
+
 $conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
+
 if (!$conn) 
 {
     die("Connection failed: " . mysqli_connect_error());
 }
+
 $successMessage = "";
 $publishMessage = "";
 $error = "";
@@ -25,8 +30,8 @@ $quizzesResult = mysqli_query($conn, "SELECT id, title FROM quizzes WHERE create
 $quiz_id = intval($_POST['quiz_id'] ?? $_GET['quiz_id'] ?? 0);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_question'])) 
-   
-    {
+
+{
     $question = mysqli_real_escape_string($conn, $_POST['question'] ?? '');
     $option1 = mysqli_real_escape_string($conn, $_POST['option1'] ?? '');
     $option2 = mysqli_real_escape_string($conn, $_POST['option2'] ?? '');
@@ -35,10 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_question']))
     $correct_option = intval($_POST['correct_option'] ?? 0);
 
     if ($quiz_id && $question && $option1 && $option2 && $option3 && $option4 && $correct_option >= 1 && $correct_option <= 4) 
-      {
+    
+    {
         $sql = "INSERT INTO questions (quiz_id, question_text, option_1, option_2, option_3, option_4, correct_option) 
                 VALUES ($quiz_id, '$question', '$option1', '$option2', '$option3', '$option4', $correct_option)";
         if (mysqli_query($conn, $sql)) 
+        
         {
             $successMessage = "Question added successfully.";
         } 
@@ -47,10 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_question']))
             $error = "Failed to add question. Please try again.";
         }
     } 
-       else 
+    else 
     {
         $error = "Please fill all fields correctly.";
-    }
+}
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['publish_quiz'])) 
@@ -59,32 +66,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['publish_quiz']))
     $quiz_id = intval($_POST['quiz_id']);
     $update = mysqli_query($conn, "UPDATE quizzes SET is_published = 1 WHERE id = $quiz_id");
     if ($update)
-    {
+     {
         $publishMessage = "Published successfully!";
     } 
     else 
     {
-        $error = "Failed to publish the quiz. Please try again.";
-    }
+        $error = "Failed to publish quiz.";
 }
-$question =[];
+}
+
+$questions = [];
 if ($quiz_id) 
 {
     $questionsResult = mysqli_query($conn, "SELECT * FROM questions WHERE quiz_id = $quiz_id");
     while ($row = mysqli_fetch_assoc($questionsResult)) 
+    
     {
-        $question[] = $row;
+        $questions[] = $row;
     }
 }
+
 mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
 <title>Add Question - QuizMaster</title>
-    <link rel="stylesheet" href="Css/addqs.css" />
-    </head>
+    <link rel="stylesheet" href="../Css/addqs.css" />
+
+</head>
 <body>
 <div class="dashboard-layout">
     <aside class="sidebar">
@@ -97,10 +109,10 @@ mysqli_close($conn);
             <li><a href="edit_question.php"> Edit Questions</a></li>
             <li><a href="delete_question.php"> Delete Questions</a></li>
             <li><a href="teacher_results.php"> View Results</a></li>
-        </ul>
+    </ul>
 
         <form action="../logout.php" method="post">
-            <button type="submit" class="logout-btn">Logout</button>
+        <button type="submit" class="logout-btn">Logout</button>
         </form>
 
     </aside>
@@ -110,8 +122,8 @@ mysqli_close($conn);
         <div class="breadcrumbs">Dashboard &gt; Add Question</div>
         <h1>Add New Question</h1>
 
-
     <?php if ($successMessage): ?>
+
         <div class="success-message"><?= htmlspecialchars($successMessage) ?></div>
     <?php endif; ?>
     <?php if ($error): ?>
@@ -141,7 +153,6 @@ mysqli_close($conn);
                 <textarea id="question" name="question" rows="3" placeholder="Enter question text" required></textarea>
             </div>
 
-
          <div class="form-group">
 
                 <label>Options:</label>
@@ -158,12 +169,12 @@ mysqli_close($conn);
                 <label for="correct_option">Correct Option (1-4):</label>
                 <input type="number" id="correct_option" name="correct_option" min="1" max="4" required>
 
-            </div>
+         </div>
 
             <button type="submit" name="submit_question" class="quick-btn">Add Question</button>
             <a href="../dashboard.php" class="quick-btn" style="background:#777; margin-left:10px;">Back to Dashboard</a>
  </form>
-
+         
  <form method="POST" action="" style="display:inline;">
 
                 <input type="hidden" name="quiz_id" value="<?= $quiz_id ?>">
@@ -175,7 +186,6 @@ mysqli_close($conn);
          <?php if (count($questions) > 0): ?>
              <h2>Questions Added</h2>
              <?php foreach ($questions as $q): ?>
-                
                     <div class="question-block">
                      <strong><?= htmlspecialchars($q['question_text']) ?></strong><br>
 
@@ -203,7 +213,6 @@ mysqli_close($conn);
             document.getElementById('popup').style.display = 'none';
         }, 3000);
     </script>
-
 
 <?php endif; ?>
 </body>
