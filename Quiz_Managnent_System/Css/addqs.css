@@ -1,6 +1,4 @@
-<style>
-
-        .popup-message 
+.popup-message 
         {
             display: none;
             position: fixed;
@@ -38,5 +36,3 @@
             padding: 10px;
             margin-top: 10px;
         }
-
-    </style>
