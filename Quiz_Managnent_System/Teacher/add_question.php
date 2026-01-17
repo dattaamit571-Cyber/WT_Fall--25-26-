@@ -78,3 +78,88 @@ if ($quiz_id)
 }
 mysqli_close($conn);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+<title>Add Question - QuizMaster</title>
+    <link rel="stylesheet" href="Css/addqs.css" />
+    </head>
+<body>
+<div class="dashboard-layout">
+    <aside class="sidebar">
+        <h2>Menu</h2>
+
+    <ul>
+            <li><a href="../dashboard.php"> Dashboard</a></li>
+            <li><a href="create_quiz.php"> Create Quiz</a></li>
+            <li><a href="add_question.php"> Add Questions</a></li>
+            <li><a href="edit_question.php"> Edit Questions</a></li>
+            <li><a href="delete_question.php"> Delete Questions</a></li>
+            <li><a href="teacher_results.php"> View Results</a></li>
+        </ul>
+
+        <form action="../logout.php" method="post">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+
+    </aside>
+
+    <main class="content-area">
+
+        <div class="breadcrumbs">Dashboard &gt; Add Question</div>
+        <h1>Add New Question</h1>
+
+
+    <?php if ($successMessage): ?>
+        <div class="success-message"><?= htmlspecialchars($successMessage) ?></div>
+    <?php endif; ?>
+    <?php if ($error): ?>
+            <div class="error-message"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+        <form method="POST" action="">
+         <div class="form-group">
+            <label for="quiz_id">Select Quiz:</label>
+            <select id="quiz_id" name="quiz_id" onchange="this.form.submit()" required>
+                <option value="">-- Select Quiz --</option>
+                <?php mysqli_data_seek($quizzesResult, 0); ?>
+                    <?php while ($row = mysqli_fetch_assoc($quizzesResult)): ?>
+                    <option value="<?= $row['id'] ?>" <?= ($row['id'] == $quiz_id) ? 'selected' : '' ?>>
+                           
+                    <?= htmlspecialchars($row['title']) ?>
+                        </option>
+                    <?php endwhile; ?>
+
+                </select>
+            </div>
+
+         <?php if ($quiz_id): ?>
+
+            <div class="form-group">
+                <label for="question">Question Text:</label>
+                <textarea id="question" name="question" rows="3" placeholder="Enter question text" required></textarea>
+            </div>
+
+
+         <div class="form-group">
+
+                <label>Options:</label>
+
+                <input type="text" name="option1" placeholder="Option 1" required>
+                <input type="text" name="option2" placeholder="Option 2" required>
+                <input type="text" name="option3" placeholder="Option 3" required>
+                <input type="text" name="option4" placeholder="Option 4" required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="correct_option">Correct Option (1-4):</label>
+                <input type="number" id="correct_option" name="correct_option" min="1" max="4" required>
+
+            </div>
+
+            <button type="submit" name="submit_question" class="quick-btn">Add Question</button>
+            <a href="../dashboard.php" class="quick-btn" style="background:#777; margin-left:10px;">Back to Dashboard</a>
+ </form>
