@@ -72,3 +72,6 @@ if ($username === 'Teacher')
         </div>
 
     </main>
+</div>
+</body>
+</html>
