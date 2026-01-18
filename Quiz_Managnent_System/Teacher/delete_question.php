@@ -106,3 +106,19 @@ mysqli_close($conn);
 
     <?php endforeach; ?>
     </ul>
+
+    <?php elseif ($quiz_id): ?>
+        <p>No questions found for this quiz.</p>
+        <?php endif; ?>
+
+      <a href="../dashboard.php" class="quick-btn" style="background:#777; margin-top:10px;">Back to Dashboard</a>
+    </main>
+</div>
+
+<?php if ($successMessage || $error): ?>
+    <div class="popup-overlay" id="popupMessage">
+    <div class="popup-box <?= $successMessage ? 'success' : 'error' ?>">
+        <p><?= htmlspecialchars($successMessage ?: $error) ?></p>
+        <button onclick="document.getElementById('popupMessage').style.display='none'">OK</button>
+        </div>
+    </div>
