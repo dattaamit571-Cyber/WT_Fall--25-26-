@@ -78,3 +78,19 @@ mysqli_close($conn);
         <button type="submit" class="logout-btn">Logout</button>
         </form>
     </aside>
+        <main class="content-area">
+    <div class="breadcrumbs">Dashboard &gt; Delete Questions</div>
+
+     <h1>Delete Questions</h1>
+
+        <form method="GET" action="">
+            <label for="quiz_id">Select Quiz:</label>
+            <select id="quiz_id" name="quiz_id" onchange="this.form.submit()">
+            <option value="">-- Select Quiz --</option>
+
+            <?php while ($row = mysqli_fetch_assoc($quizzesResult)): ?>
+            <option value="<?= $row['id'] ?>" <?= $quiz_id === (int)$row['id'] ? 'selected' : '' ?>><?= htmlspecialchars($row['title']) ?></option>
+             <?php endwhile; ?>
+           
+            </select>
+        </form>
