@@ -52,3 +52,16 @@ if ($quiz_id)
 
 mysqli_close($conn);
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Delete Questions - QuizMaster</title>
+    <link rel="stylesheet" href="../Css/deleteqs.css" />
+</head>
+<body>
+<div class="dashboard-layout">
+       <aside class="sidebar">
+
+        <h2>Menu</h2>
