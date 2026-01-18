@@ -122,3 +122,14 @@ mysqli_close($conn);
         <button onclick="document.getElementById('popupMessage').style.display='none'">OK</button>
         </div>
     </div>
+    <?php endif; ?>
+<script>
+    setTimeout(() => 
+    {
+    const popup = document.getElementById('popupMessage');
+    if (popup) popup.style.display = 'none';
+    }, 4000);
+ 
+</script>
+</body>
+</html>
