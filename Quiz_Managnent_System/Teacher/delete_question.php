@@ -94,3 +94,15 @@ mysqli_close($conn);
            
             </select>
         </form>
+
+        <?php if ($quiz_id && count($questions) > 0): ?>
+            <h2>Questions for Selected Quiz</h2>
+            <ul>
+                <?php foreach ($questions as $q): ?>
+                    <li>
+                        <?= htmlspecialchars($q['question_text']) ?>
+                        <a href="?quiz_id=<?= $quiz_id ?>&question_id=<?= $q['id'] ?>&delete=1">Delete</a>
+                    </li>
+
+    <?php endforeach; ?>
+    </ul>
