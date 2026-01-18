@@ -37,3 +37,18 @@ if ($question_id && $_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delete'
         $error = "Failed to delete question.";
     }
 }
+$quizzesResult = mysqli_query($conn, "SELECT id, title FROM quizzes WHERE created_by = '{$_SESSION['user_id']}'");
+
+$questions = [];
+if ($quiz_id) 
+
+{
+    $questionsResult = mysqli_query($conn, "SELECT * FROM questions WHERE quiz_id = $quiz_id");
+    while ($row = mysqli_fetch_assoc($questionsResult)) 
+    {
+        $questions[] = $row;
+    }
+}
+
+mysqli_close($conn);
+?>
