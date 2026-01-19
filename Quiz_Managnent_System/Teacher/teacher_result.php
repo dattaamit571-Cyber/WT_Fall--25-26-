@@ -1,0 +1,125 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'teacher') 
+
+{
+    header("Location: ../dashboard.php");
+    exit();
+}
+
+$servername = "localhost";
+$db_username = "root";
+$db_password = "";
+$dbname = "quiz_app";
+
+$conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
+
+if (!$conn) 
+{
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$quizzesResult = mysqli_query($conn, "SELECT id, title FROM quizzes WHERE created_by = '{$_SESSION['user_id']}'");
+$quiz_id = intval($_GET['quiz_id'] ?? 0);
+$results = [];
+
+if ($quiz_id) 
+{
+    $sql = "SELECT r.id, u.username, r.score, r.date_taken FROM results r JOIN users u ON r.student_id = u.id WHERE r.quiz_id = $quiz_id ORDER BY r.date_taken DESC";
+    $resultsResult = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_assoc($resultsResult)) 
+    
+    {
+        $results[] = $row;
+    }
+}
+
+mysqli_close($conn);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>View Results - QuizMaster</title>
+    
+
+<link rel="stylesheet" href="../Css/Teacher_result.css" />
+
+</head>
+<body>
+
+
+<div class="dashboard-layout">
+    <aside class="sidebar">
+        <h2>Menu</h2>
+
+
+     <ul>
+            <li><a href="../dashboard.php"> Dashboard</a></li>
+            <li><a href="create_quiz.php">Create Quiz</a></li>
+            <li><a href="add_question.php"> Add Questions</a></li>
+            <li><a href="edit_question.php"> Edit Questions</a></li>
+            <li><a href="delete_question.php"> Delete Questions</a></li>
+            <li><a href="teacher_results.php"> View Results</a></li>
+      </ul>
+
+
+     <form action="../logout.php" method="post">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+
+    </aside>
+
+
+    <main class="content-area">
+        <div class="breadcrumbs">Dashboard &gt; View Results</div>
+
+    <h1>View Results</h1>
+
+    <form method="GET" action="">
+            <label for="quiz_id">Select Quiz:</label>
+            <select id="quiz_id" name="quiz_id" onchange="this.form.submit()">
+                <option value="">-- Select Quiz --</option>
+            <?php while ($row = mysqli_fetch_assoc($quizzesResult)): ?>
+                    <option value="<?= $row['id'] ?>" <?= $quiz_id === (int)$row['id'] ? 'selected' : '' ?>><?= htmlspecialchars($row['title']) ?></option>
+                <?php endwhile; ?>
+        </select>
+        </form>
+
+        <?php if ($quiz_id && count($results) > 0): ?>
+        <table>
+             <thead>
+                <tr>
+                        <th>User</th>
+                        <th>Score</th>
+                        <th>Taken At</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                 <?php foreach ($results as $res): ?>
+                        
+                    <tr>
+                            <td><?= htmlspecialchars($res['username']) ?></td>
+                            <td><?= $res['score'] ?></td>
+                            <td><?= htmlspecialchars($res['date_taken']) ?></td>
+                        </tr>
+
+                    <?php endforeach; ?>
+                </tbody>
+         </table>
+
+        <?php elseif ($quiz_id): ?>
+            <p>No results found for this quiz.</p>
+        <?php endif; ?>
+
+
+        <a href="../dashboard.php" class="quick-btn" style="background:#777; margin-top:10px;">Back to Dashboard</a>
+
+</main>
+</div>
+</body>
+</html>
