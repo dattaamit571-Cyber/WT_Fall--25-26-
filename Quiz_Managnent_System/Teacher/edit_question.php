@@ -64,3 +64,30 @@ if (mysqli_query($conn, $sql))
         $error = "Please fill all fields correctly.";
 }
 }
+$quizzes = [];
+$quizSql = "SELECT id, title FROM quizzes WHERE created_by = $user_id";
+$quizResult = mysqli_query($conn, $quizSql);
+
+if ($quizResult) 
+{
+    while ($row = mysqli_fetch_assoc($quizResult)) 
+    {
+        $quizzes[] = $row;
+    }
+}
+
+if ($quiz_id > 0)
+ {
+    $questionSql = "SELECT * FROM questions WHERE quiz_id = $quiz_id";
+    $questionsResult = mysqli_query($conn, $questionSql);
+    if ($questionsResult)
+     {
+        while ($row = mysqli_fetch_assoc($questionsResult)) 
+        
+    {
+        $questions[] = $row;
+     }
+}
+}
+mysqli_close($conn);
+?>
