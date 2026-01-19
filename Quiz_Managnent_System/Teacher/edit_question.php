@@ -158,7 +158,6 @@ mysqli_close($conn);
            
          </select>
         </form>
-
        
      <?php if ($quiz_id && count($questions) > 0): ?>
 
