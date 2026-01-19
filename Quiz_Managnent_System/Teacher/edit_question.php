@@ -106,3 +106,18 @@ mysqli_close($conn);
 
  <aside class="sidebar">
     <h2>Menu</h2>
+
+    <ul>
+            <li><a href="../dashboard.php"> Dashboard</a></li>
+            <li><a href="create_quiz.php"> Create Quiz</a></li>
+            <li><a href="add_question.php"> Add Questions</a></li>
+            <li><a href="edit_question.php"> Edit Questions</a></li>
+            <li><a href="delete_question.php"> Delete Questions</a></li>
+            <li><a href="teacher_results.php"> View Results</a></li>
+    </ul>
+        
+
+        <form action="../logout.php" method="post">
+        <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </aside>
