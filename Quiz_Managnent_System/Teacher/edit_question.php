@@ -47,3 +47,20 @@ if ($question_id && $question && $option1 && $option2 && $option3 && $option4 &&
             option_4='$option4', 
             correct_option=$correct_option 
             WHERE id=$question_id";
+
+if (mysqli_query($conn, $sql)) 
+{
+            $successMessage = "Question updated successfully.";
+        } 
+        else 
+        
+        {
+            $error = "Failed to update question.";
+        }
+    } 
+    else 
+    
+    {
+        $error = "Please fill all fields correctly.";
+}
+}
