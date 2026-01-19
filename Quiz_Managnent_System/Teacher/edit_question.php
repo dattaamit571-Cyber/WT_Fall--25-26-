@@ -91,3 +91,18 @@ if ($quiz_id > 0)
 }
 mysqli_close($conn);
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Questions - QuizMaster</title>
+    <link rel="stylesheet" href="../Css/editqs.css" />
+
+</head>
+<body>
+<div class="dashboard-layout">
+
+
+ <aside class="sidebar">
+    <h2>Menu</h2>
