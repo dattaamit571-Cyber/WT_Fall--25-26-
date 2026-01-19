@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
     if ($email && $password)
 
- {
+    {
         $sql = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
         $result = mysqli_query($conn, $sql);
 
