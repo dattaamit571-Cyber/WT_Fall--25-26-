@@ -121,3 +121,100 @@ mysqli_close($conn);
         <button type="submit" class="logout-btn">Logout</button>
         </form>
     </aside>
+
+    <main class="content-area">
+        <div class="breadcrumbs">Dashboard &gt; Edit Questions</div>
+
+        <h1>Edit Questions</h1>
+
+
+    <?php if ($successMessage): ?>
+
+    <div class="success-message"><?= htmlspecialchars($successMessage) ?></div>
+
+    <?php endif; ?>
+
+        <?php if ($error): ?>
+
+            <div class="error-message"><?= htmlspecialchars($error) ?></div>
+
+        <?php endif; ?>
+
+
+        <form method="GET" action="">
+
+            <label for="quiz_id">Select Quiz to Edit:</label>
+
+            <select id="quiz_id" name="quiz_id" onchange="this.form.submit()">
+
+            <option value="">-- Select Quiz --</option>
+
+                <?php foreach ($quizzes as $qz): ?>
+                <option value="<?= $qz['id'] ?>" <?= ($quiz_id === (int)$qz['id']) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($qz['title']) ?>
+                    </option>
+
+             <?php endforeach; ?>
+           
+         </select>
+        </form>
+
+       
+     <?php if ($quiz_id && count($questions) > 0): ?>
+
+         <h2>Questions for Selected Quiz</h2>
+
+            <?php foreach ($questions as $q): ?>
+                
+                
+            <form method="POST" action="" style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
+                    
+            <input type="hidden" name="question_id" value="<?= $q['id'] ?>">
+                   
+            <div class="form-group">
+                        <label>Question Text:</label>
+                        <textarea name="question" required><?= htmlspecialchars($q['question_text']) ?></textarea>
+                    </div>
+                    
+            <div class="form-group">
+                        <label>Option 1:</label>
+                        <input type="text" name="option1" value="<?= htmlspecialchars($q['option_1']) ?>" required>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Option 2:</label>
+                        <input type="text" name="option2" value="<?= htmlspecialchars($q['option_2']) ?>" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Option 3:</label>
+                        <input type="text" name="option3" value="<?= htmlspecialchars($q['option_3']) ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Option 4:</label>
+                        <input type="text" name="option4" value="<?= htmlspecialchars($q['option_4']) ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Correct Option (1-4):</label>
+                        <input type="number" name="correct_option" min="1" max="4" value="<?= $q['correct_option'] ?>" required>
+                    </div>
+
+                    <button type="submit" class="quick-btn">Update Question</button>
+                </form>
+
+         <?php endforeach; ?>
+
+    <?php elseif ($quiz_id): ?>
+
+    <p>No questions found for this quiz.</p>
+    <?php endif; ?>
+
+<a href="../dashboard.php" class="quick-btn" style="background:#777; margin-top:10px;">Back to Dashboard</a>
+</main>
+</div>
+</body>
+</html>
